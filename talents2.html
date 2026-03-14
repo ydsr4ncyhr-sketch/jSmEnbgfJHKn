@@ -1,0 +1,2521 @@
+<!DOCTYPE html>
+<html lang="en" class="system font-serif">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>aaaaaaa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    
+    :root {
+      --t: oklch(0.28 0.0071 106.85);
+      --bg: oklch(0.97 0.0108 95.16);
+      --lnk: oklch(0.56 0.2573 262.91);
+      --mu: oklch(0.55 0.012 95);
+      --bd: oklch(0.86 0.010 95);
+      --pn: oklch(0.995 0.006 95);
+      --p2: oklch(0.940 0.012 95);
+      --cb: oklch(0.83 0.010 95);
+      --acc: oklch(0.52 0.20 25);
+      --pre: oklch(0.48 0.16 145);
+      --exc: oklch(0.52 0.20 25);
+    }
+
+    html.dark {
+      --t: oklch(0.88 0.0614 259.83);
+      --bg: oklch(0.21 0.0353 259.49);
+      --lnk: oklch(0.71 0.1643 254.62);
+      --mu: oklch(0.58 0.040 259);
+      --bd: oklch(0.28 0.030 259);
+      --pn: oklch(0.24 0.030 259.49);
+      --p2: oklch(0.27 0.032 259);
+      --cb: oklch(0.32 0.035 259);
+      --pre: oklch(0.65 0.16 145);
+      --exc: oklch(0.65 0.18 25);
+    }
+
+    html.system {
+      --t: oklch(0.28 0.0071 106.85);
+      --bg: oklch(0.97 0.0108 95.16);
+      --lnk: oklch(0.56 0.2573 262.91);
+      --mu: oklch(0.55 0.012 95);
+      --bd: oklch(0.86 0.010 95);
+      --pn: oklch(0.995 0.006 95);
+      --p2: oklch(0.940 0.012 95);
+      --cb: oklch(0.83 0.010 95);
+      --pre: oklch(0.48 0.16 145);
+      --exc: oklch(0.52 0.20 25);
+    }
+
+    @media (prefers-color-scheme:dark) {
+      html.system {
+        --t: oklch(0.88 0.0614 259.83);
+        --bg: oklch(0.21 0.0353 259.49);
+        --lnk: oklch(0.71 0.1643 254.62);
+        --mu: oklch(0.58 0.040 259);
+        --bd: oklch(0.28 0.030 259);
+        --pn: oklch(0.24 0.030 259.49);
+        --p2: oklch(0.27 0.032 259);
+        --cb: oklch(0.32 0.035 259);
+        --pre: oklch(0.65 0.16 145);
+        --exc: oklch(0.65 0.18 25);
+      }
+    }
+
+    
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      transition: background-color 500ms ease, color 500ms ease;
+      scroll-behavior: smooth;
+      scroll-padding: 2rem;
+    }
+
+    body,
+    div,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    li,
+    a,
+    nav,
+    main,
+    header,
+    aside,
+    button,
+    input {
+      transition-property: background-color, color, border-color, opacity;
+      transition-duration: 300ms;
+    }
+
+    body {
+      font-family: 'Source Serif 4', 'Georgia', serif;
+      background: var(--bg);
+      color: var(--t);
+      line-height: 1.681;
+      margin: 0;
+    }
+
+    ::selection {
+      background: oklch(from var(--lnk) l c h / 20%);
+    }
+
+    
+    @keyframes unblur-in {
+      0% {
+        filter: blur(10px);
+        transform: translateY(20%);
+        opacity: 0;
+      }
+
+      100% {
+        filter: blur(0px);
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .unblur {
+      filter: blur(10px);
+      opacity: 0;
+      animation: unblur-in 500ms cubic-bezier(.4, 0, .2, 1) forwards;
+    }
+
+    .fade {
+      opacity: 0;
+      animation: fade-in 500ms ease-in-out forwards;
+    }
+
+    .d0 {
+      animation-delay: 0ms;
+    }
+
+    .d1 {
+      animation-delay: 60ms;
+    }
+
+    .d2 {
+      animation-delay: 120ms;
+    }
+
+    .d3 {
+      animation-delay: 180ms;
+    }
+
+    .d4 {
+      animation-delay: 240ms;
+    }
+
+    
+    .fox-lnk {
+      color: var(--lnk);
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      overflow: visible;
+    }
+
+    .fox-lnk::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--lnk);
+      opacity: .35;
+      z-index: -1;
+      transition: height 200ms ease, bottom 200ms ease, opacity 200ms ease;
+    }
+
+    .fox-lnk:hover::after {
+      height: .5em;
+      bottom: 3px;
+      opacity: .22;
+    }
+
+    html.dark .fox-lnk:hover::after {
+      opacity: .65;
+    }
+
+    @media(prefers-color-scheme:dark) {
+      html.system .fox-lnk:hover::after {
+        opacity: .65;
+      }
+    }
+
+    
+    .wrap {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    
+    .hdr {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 55px;
+      background: color-mix(in oklch, var(--bg) 82%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', 'Georgia', serif;
+      font-size: 16.5px;
+      font-style: italic;
+      color: var(--t);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .logo-dot {
+      color: var(--acc);
+    }
+
+    .logo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-style: normal;
+      color: var(--mu);
+      opacity: .65;
+      letter-spacing: .04em;
+    }
+
+    .hdr-r {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .srch-wrap {
+      position: relative;
+    }
+
+    .srch {
+      background: var(--pn);
+      border: 1px solid var(--cb);
+      border-radius: 7px;
+      padding: 6px 11px 6px 30px;
+      color: var(--t);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      width: 215px;
+      transition: border-color 200ms;
+    }
+
+    .srch::placeholder {
+      color: var(--mu);
+      font-style: italic;
+    }
+
+    .srch:focus {
+      outline: none;
+      border-color: var(--lnk);
+    }
+
+    .srch-ico {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mu);
+      font-size: 13px;
+      pointer-events: none;
+    }
+
+    
+    .btn {
+      height: 31px;
+      padding: 0 10px;
+      background: var(--pn);
+      border: 1px solid var(--cb);
+      border-radius: 6px;
+      color: var(--t);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      transition: background 150ms, border-color 150ms, transform 150ms, box-shadow 150ms;
+    }
+
+    .btn:hover {
+      background: var(--p2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px color-mix(in oklch, var(--t) 10%, transparent);
+    }
+
+    .btn:disabled {
+      opacity: .35;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #cmpBtn {
+      font-weight: 700;
+      min-width: 110px;
+    }
+
+    
+    .sb {
+      width: 252px;
+      background: var(--pn);
+      border-right: 1px solid var(--bd);
+      padding-top: 55px;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      transition: transform 280ms cubic-bezier(.4, 0, .2, 1), box-shadow 280ms;
+      box-shadow: 1px 0 18px color-mix(in oklch, var(--t) 5%, transparent);
+    }
+
+    .sb.hidden {
+      transform: translateX(-100%);
+      box-shadow: none;
+    }
+
+    .sb::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .sb::-webkit-scrollbar-thumb {
+      background: var(--bd);
+      border-radius: 2px;
+    }
+
+    .nav {
+      display: block;
+      padding: 7px 15px;
+      color: var(--t);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 450;
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      border-radius: 5px;
+      margin: 2px 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .nav:hover {
+      background: var(--p2);
+    }
+
+    .nav.on {
+      background: var(--p2);
+      border-left-color: var(--mu);
+    }
+
+    .nav strong {
+      font-weight: 580;
+    }
+
+    .nd {
+      padding: 8px 15px 4px;
+      color: var(--mu);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--bd);
+      margin-top: 5px;
+    }
+
+    .nd:first-child {
+      border-top: none;
+      margin-top: 0;
+    }
+
+    
+    .main {
+      flex: 1;
+      margin-left: 252px;
+      padding-top: 55px;
+      transition: margin-left 280ms cubic-bezier(.4, 0, .2, 1);
+      min-height: 100vh;
+    }
+
+    .main.full {
+      margin-left: 0;
+    }
+
+    .ca {
+      max-width: 840px;
+      padding: 42px 50px;
+      margin: 0 auto;
+    }
+
+    
+    .tr {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 4px;
+    }
+
+    .ham2 {
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      flex-shrink: 0;
+      background: var(--pn);
+      border: 1px solid var(--cb);
+      color: var(--t);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: background 150ms, transform 150ms, box-shadow 150ms;
+    }
+
+    .ham2:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px color-mix(in oklch, var(--t) 9%, transparent);
+    }
+
+    .pt {
+      font-family: 'DM Serif Display', 'Georgia', serif;
+      font-size: 36px;
+      font-style: italic;
+      color: var(--t);
+      margin: 0;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+    }
+
+    .pd {
+      font-family: 'Source Serif 4', serif;
+      font-size: 15px;
+      color: var(--mu);
+      margin-bottom: 22px;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .st {
+      font-family: 'DM Serif Display', serif;
+      font-size: 21px;
+      font-style: italic;
+      color: var(--t);
+      margin-bottom: 14px;
+      margin-top: 40px;
+      letter-spacing: -.015em;
+      border-bottom: 1px solid var(--bd);
+      padding-bottom: 7px;
+    }
+
+    
+    .fl {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .fi {
+      padding: 12px 17px;
+      border-radius: 7px;
+      border: 1px solid var(--bd);
+      margin-bottom: 6px;
+      background: var(--pn);
+      transition: border-color 150ms, background 150ms;
+    }
+
+    .fi:hover {
+      border-color: color-mix(in oklch, var(--t) 22%, transparent);
+      background: var(--p2);
+    }
+
+    .th {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+
+    .tn {
+      font-family: 'Source Serif 4', serif;
+      font-size: 15px;
+      font-weight: 650;
+      color: var(--t);
+      letter-spacing: -.01em;
+    }
+
+    .cb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      padding: 1px 6px;
+      border-radius: 20px;
+      background: var(--p2);
+      border: 1px solid var(--bd);
+      color: var(--mu);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    .rq {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--mu);
+      line-height: 1.55;
+    }
+
+    
+    .dep-main {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dep-caret {
+      font-size: 11px;
+      color: var(--mu);
+      transition: transform 120ms ease;
+      opacity: .85;
+    }
+
+    .dep-children {
+      margin-top: 7px;
+      padding: 6px 10px 6px 4px;
+      background: color-mix(in oklch, var(--pn) 80%, transparent);
+      border-radius: 6px;
+      font-size: 12.5px;
+      color: var(--mu);
+    }
+
+    .dep-row {
+      display: flex;
+      align-items: baseline;
+      line-height: 1.75;
+    }
+
+    .dep-prefix {
+      white-space: pre;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--mu);
+      flex-shrink: 0;
+      opacity: 0.6;
+      user-select: none;
+    }
+
+    .dep-row .dep-link {
+      color: var(--t);
+      text-decoration: none;
+      font-family: 'Source Serif 4', serif;
+    }
+
+    .dep-row .dep-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .rb {
+      color: var(--t);
+      opacity: .56;
+    }
+
+    .rp {
+      color: var(--pre);
+    }
+
+    .rx {
+      color: var(--exc);
+    }
+
+    
+    .ii {
+      font-family: 'Source Serif 4', serif;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .ii strong {
+      font-weight: 700;
+    }
+
+    
+    .sc {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin: 4px 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .sl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--mu);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .ms {
+      position: relative;
+      display: inline-block;
+    }
+
+    .ms select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: var(--pn);
+      color: var(--t);
+      border: 1px solid var(--cb);
+      padding: 6px 26px 6px 8px;
+      border-radius: 6px;
+      min-width: 115px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: border-color 150ms;
+    }
+
+    .ms select:focus {
+      outline: none;
+      border-color: var(--lnk);
+    }
+
+    .ms::after {
+      content: '▾';
+      position: absolute;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mu);
+      pointer-events: none;
+      font-size: 10px;
+    }
+
+    .ms select option {
+      background: var(--pn);
+      color: var(--t);
+    }
+
+    .pi {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: var(--mu);
+      margin-left: auto;
+      opacity: .7;
+    }
+
+    
+    .pg {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .pb {
+      font-family: 'Source Serif 4', serif;
+      font-style: italic;
+      padding: 6px 24px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--t);
+      background: transparent;
+      border: 1px solid var(--bd);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 150ms;
+    }
+
+    .pb:disabled {
+      opacity: .3;
+      cursor: default;
+    }
+
+    .pb:not(:disabled):hover {
+      background: var(--p2);
+      border-color: var(--mu);
+    }
+
+    
+    .toc {
+      position: fixed;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 190px;
+      background: var(--pn);
+      border: 1px solid var(--bd);
+      border-radius: 9px;
+      padding: 13px 15px;
+    }
+
+    .toc-t {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--mu);
+      margin-bottom: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .toc-ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .toc-li {
+      margin-bottom: 2px;
+    }
+
+    .toc-a {
+      color: var(--mu);
+      text-decoration: none;
+      font-family: 'Source Serif 4', serif;
+      font-size: 12px;
+      font-style: italic;
+      display: inline-block;
+      padding: 2px 0;
+      position: relative;
+      overflow: visible;
+      transition: color 150ms;
+    }
+
+    
+    .toc-a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--lnk);
+      opacity: .3;
+      z-index: -1;
+      transition: height 200ms ease, bottom 200ms ease, opacity 200ms ease;
+    }
+
+    .toc-a:hover::after,
+    .toc-a.on::after {
+      height: .45em;
+      bottom: 2px;
+      opacity: .18;
+    }
+
+    html.dark .toc-a:hover::after,
+    html.dark .toc-a.on::after {
+      opacity: .55;
+    }
+
+    @media(prefers-color-scheme:dark) {
+
+      html.system .toc-a:hover::after,
+      html.system .toc-a.on::after {
+        opacity: .55;
+      }
+    }
+
+    .toc-a:hover,
+    .toc-a.on {
+      color: var(--t);
+    }
+
+    .toc-c {
+      margin-top: 9px;
+      font-family: 'Source Serif 4', serif;
+      font-size: 11px;
+      font-style: italic;
+      color: var(--mu);
+      line-height: 1.65;
+      min-height: 48px;
+      opacity: 1;
+      transition: opacity 180ms;
+    }
+
+    .toc-c.fd {
+      opacity: 0;
+    }
+
+    
+    .cmp-cb {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: auto;
+    }
+
+    .cmp-tog {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 5px;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .cmp-sw {
+      width: 17px;
+      height: 17px;
+      border-radius: 4px;
+      border: 1px solid var(--cb);
+      background: var(--pn);
+      display: inline-block;
+      flex: 0 0 auto;
+      transition: all 120ms;
+    }
+
+    .cmp-sw::after {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 9px;
+      border: 1.5px solid transparent;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(40deg) scale(0);
+      margin: 1px auto 0;
+      transition: transform 120ms, border-color 120ms;
+    }
+
+    .cmp-tog input:checked+.cmp-sw {
+      background: var(--lnk);
+      border-color: var(--lnk);
+    }
+
+    .cmp-tog input:checked+.cmp-sw::after {
+      border-color: var(--bg);
+      transform: rotate(40deg) scale(1);
+    }
+
+    
+    .ov {
+      position: fixed;
+      inset: 0;
+      background: color-mix(in oklch, var(--bg) 35%, transparent);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .ov.on {
+      display: flex;
+    }
+
+    .mo {
+      background: var(--pn);
+      border: 1px solid var(--bd);
+      border-radius: 11px;
+      box-shadow: 0 20px 55px color-mix(in oklch, var(--t) 16%, transparent);
+      color: var(--t);
+      animation: unblur-in 300ms cubic-bezier(.4, 0, .2, 1) forwards;
+    }
+
+    
+    .eg {
+      padding: 26px 30px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .eg h2 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      margin: 0 0 8px;
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    .eg p {
+      font-family: 'Source Serif 4', serif;
+      font-style: italic;
+      color: var(--mu);
+      margin-bottom: 18px;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+
+    .eg .cl {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 6px;
+      background: var(--p2);
+      border: 1px solid var(--cb);
+      cursor: pointer;
+      color: var(--t);
+      font-family: 'Source Serif 4', serif;
+      font-style: italic;
+      font-size: 13.5px;
+    }
+
+    .eg .cl:hover {
+      background: var(--p2);
+    }
+
+    
+    .cm {
+      padding: 18px;
+      max-width: 820px;
+      width: calc(100% - 36px);
+      overflow: auto;
+      max-height: 85vh;
+    }
+
+    .cm h3 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      margin: 0 0 11px;
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .cmt {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cmt th,
+    .cmt td {
+      border: 1px solid var(--bd);
+      padding: 8px 11px;
+      text-align: left;
+      color: var(--t);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+    }
+
+    .cmt th {
+      background: var(--p2);
+      font-weight: 600;
+    }
+
+    .cmc {
+      display: flex;
+      gap: 7px;
+      justify-content: flex-end;
+      margin-top: 11px;
+    }
+
+    .cmn {
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
+      font-size: 11px;
+      color: var(--mu);
+      margin-top: 7px;
+    }
+
+    
+    .src {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .06em;
+      color: var(--mu);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    
+    @media(max-width:980px) {
+      .toc {
+        display: none;
+      }
+    }
+
+    @media(max-width:700px) {
+      .main {
+        margin-left: 0;
+      }
+
+      .sb {
+        position: fixed;
+        transform: translateX(-100%);
+        z-index: 1200;
+        width: 80%;
+        max-width: 260px;
+      }
+
+      .sb.mob {
+        transform: translateX(0);
+        box-shadow: 4px 0 28px color-mix(in oklch, var(--t) 13%, transparent);
+      }
+
+      .ca {
+        padding: 16px 14px;
+      }
+
+      .pt {
+        font-size: 24px;
+      }
+
+      .srch {
+        width: 130px;
+      }
+
+      #cmpBtn {
+        min-width: 85px;
+        font-size: 11px;
+      }
+    }
+
+    
+    .info-sep {
+      height: 8px;
+      border-top: 1px solid var(--bd);
+      margin: 14px 0;
+    }
+
+    .elemental-gradient {
+      background: linear-gradient(135deg, #b5ffcc 0%, #ecc117 25%, #000000 50%, #fffef4 75%, #00ffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    
+    .elemental-bg {
+      background: linear-gradient(135deg, rgba(181, 255, 204, 0.1) 0%, rgba(236, 193, 23, 0.1) 25%, rgba(0, 0, 0, 0.1) 50%, rgba(255, 254, 244, 0.1) 75%, rgba(0, 255, 255, 0.1) 100%);
+    }
+
+    .ws { display: flex; flex-wrap: wrap; gap: 4px; margin: 5px 0 3px; }
+    .wstat { font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 2px 7px; border-radius: 12px; background: var(--p2); border: 1px solid var(--bd); letter-spacing: .04em; white-space: nowrap; }
+  </style>
+</head>
+
+<body>
+  <div class="hdr">
+    <div class="logo" id="logo">
+      playground <span class="logo-dot"></span>talents
+      <span class="logo-sub">page</span>
+    </div>
+    <div class="hdr-r">
+      <div class="srch-wrap">
+        <span class="srch-ico">⌕</span>
+        <input type="text" class="srch" id="srch" placeholder="name, stat, category…" />
+      </div>
+      <button class="btn" id="backInfo" title="Back to information">← Info</button>
+      <button class="btn" id="ham">☰</button>
+      <button class="btn" id="thm">☀️</button>
+      <button class="btn" id="cmpBtn" disabled>Compare (0)</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <nav class="sb" id="sb"></nav>
+    <main class="main" id="main">
+      <div class="ca" id="pc"></div>
+    </main>
+    <aside class="toc">
+      <h4 class="toc-t">this page</h4>
+      <ul class="toc-ul" id="tocul">
+        <li class="toc-li"><a href="#" class="toc-a on" data-t="about">about</a></li>
+        <li class="toc-li"><a href="#" class="toc-a" data-t="this">this page</a></li>
+        <li class="toc-li"><a href="#" class="toc-a" data-t="info">note</a></li>
+      </ul>
+      <div id="tocc" class="toc-c"></div>
+    </aside>
+  </div>
+
+  
+  <div class="ov" id="egov" aria-hidden="true">
+    <div class="mo eg" role="dialog">
+      <h2>i long to set it free</h2>
+      <p id="egm">i don't know what to do, just can't explain to you</p>
+      <div><button class="cl" id="egcl">oh, not another word</button></div>
+    </div>
+  </div>
+
+  
+  <div class="ov" id="cmpov" aria-hidden="true">
+    <div class="mo cm" role="dialog">
+      <h3>Compare talents</h3>
+      <div id="cmptw"></div>
+      <div class="cmc">
+        <button class="btn" id="cmpcl">close</button>
+        <button class="btn" id="cmpclr">clear</button>
+      </div>
+      <div class="cmn">select up to 6 talents by checking the box next to their name.</div>
+    </div>
+  </div>
+
+  <script>
+    
+    const SHOW_SPEC = false;
+
+    const T = {
+      "Saint Jay": { c: "frostdraw", r: "25 FROSTDRAW [ PREREQUISITE: FROSTBITE ]" },
+      "Adept Frostdrawer": { c: "frostdraw", r: "20 FROSTDRAW" },
+      "Expert Frostdrawer": { c: "frostdraw", r: "30 FROSTDRAW" },
+      "Master Frostdrawer": { c: "frostdraw", r: "50 FROSTDRAW" },
+      "Cryonis": { c: "frostdraw", r: "40 FROSTDRAW" },
+      "Frost Buster": { c: "frostdraw", r: "45 FROSTDRAW 15 HEAVY [ PREREQUISITE: CRYONIS ]" },
+      "Cold Front": { c: "frostdraw", r: "25 FROSTDRAW [ PREREQUISITE: CRYONIS ]" },
+      "Fragile Freeze": { c: "frostdraw", r: "60 FROSTDRAW" },
+      "Chilling Flourish": { c: "frostdraw", r: "30 FROSTDRAW" },
+      "Orbital Ice": { c: "frostdraw", r: "65 FROSTDRAW [ MUTUAL EXCLUSIVE: FISTS OF FORTITUDE ]" },
+      "Frozen Legs": { c: "frostdraw", r: "60 FROSTDRAW" },
+      "Frozen Pin-Cushion": { c: "frostdraw", r: "60 FROSTDRAW" },
+      "Cool Head": { c: "frostdraw", r: "30 FROSTDRAW" },
+      "Frostbite": { c: "frostdraw", r: "25 FROSTDRAW" },
+      "Bottom Freeze": { c: "frostdraw", r: "25 FROSTDRAW [ MUTUAL EXCLUSIVE: CRYSTALLIZATION ]" },
+      "Glass Path: Crystallization": { c: "frostdraw", r: "40 FROSTDRAW" },
+      "Crystal Shrapnel": { c: "frostdraw", r: "60 FROSTDRAW [ PREREQUISITE: GLASS PATH: CRYSTALLIZATION ]" },
+      "Freezing Wight": { c: "frostdraw", r: "40 FROSTDRAW [ PREREQUISITE: HAUNTED GALE ]" },
+      "Glacial Coasting": { c: "frostdraw", r: "25 AGILITY 50 FROSTDRAW [ PREREQUISITE: ORBITAL ICE ]" },
+      "Stasis Strike": { c: "frostdraw", r: "90 FROSTDRAW 90 WEAPON [ PREREQUISITE: GLASS PATH: CRYSTALLIZATION ]" },
+      "Frozen Anchor": { c: "frostdraw", r: "100 FROSTDRAW 100 WEAPON" },
+      "Fulgurite Formation": { c: "frostdraw", r: "50 FROSTDRAW 50 THUNDERCALL [ PREREQUISITES: SURGE PATH : UNSTABLE CAPACITOR, GLASS PATH: CRYSTALLIZATION ]" },
+      "Frozen Web": { c: "frostdraw", r: "40 THUNDERCALL 40 FROSTDRAW [ PREREQUISITE: STATIC LINK ]" },
+      "Temperature Shock": { c: "frostdraw", r: "40 FLAMECHARM 40 FROSTDRAW [ PREREQUISITE: GLASS PATH: CRYSTALLIZATION ]" },
+      "Adept Thundercaller": { c: "thundercall", r: "20 THUNDERCALL" },
+      "Expert Thundercaller": { c: "thundercall", r: "30 THUNDERCALL" },
+      "Master Thundercaller": { c: "thundercall", r: "50 THUNDERCALL" },
+      "Stratoshock": { c: "thundercall", r: "35 THUNDERCALL" },
+      "Jolting Current": { c: "thundercall", r: "35 THUNDERCALL" },
+      "Static Fakeout": { c: "thundercall", r: "35 THUNDERCALL 30 AGILITY" },
+      "Static Link": { c: "thundercall", r: "40 THUNDERCALL 15 INTELLIGENCE" },
+      "Link Conduction": { c: "thundercall", r: "65 THUNDERCALL [ PREREQUISITE: STATIC LINK ]" },
+      "Static Ace": { c: "thundercall", r: "70 THUNDERCALL [ PREREQUISITE: STATIC LINK ]" },
+      "Storm Link": { c: "thundercall", r: "60 THUNDERCALL 50 GALEBREATH [ PREREQUISITE: STATIC LINK ]" },
+      "Surge Path: Unstable Capacitor": { c: "thundercall", r: "40 THUNDERCALL" },
+      "Catalytic Strike": { c: "thundercall", r: "50 THUNDERCALL [ PREREQUISITE: SURGE PATH : UNSTABLE CAPACITOR ]" },
+      "Closed Circuit": { c: "thundercall", r: "50 THUNDERCALL [ PREREQUISITE: SURGE PATH : UNSTABLE CAPACITOR ]" },
+      "Fried Circuits": { c: "thundercall", r: "60 THUNDERCALL [ PREREQUISITE: SURGE PATH : UNSTABLE CAPACITOR ]" },
+      "Grand Skewer": { c: "thundercall", r: "60 THUNDERCALL [ PREREQUISITE: GRAND JAVELIN (MANTRA) ]" },
+      "Scorched Peak": { c: "thundercall", r: "50 THUNDERCALL 25 FLAMECHARM" },
+      "Dark Reciever": { c: "thundercall", r: "40 LIGHT 40 SHADOWCAST [ PREREQUISITE: STATIC LINK ]" },
+      "Authority Intimidation": { c: "thundercall", r: "60 THUNDERCALL 10 POWER" },
+      "First Interrogation": { c: "thundercall", r: "65 THUNDERCALL" },
+      "Second Interrogation": { c: "thundercall", r: "65 THUNDERCALL [ PREREQUISITE: FIRST INTERROGATION ]" },
+      "Adept Shadowcaster": { c: "shadowcast", r: "20 SHADOWCAST" },
+      "Expert Shadowcaster": { c: "shadowcast", r: "30 SHADOWCAST" },
+      "Master Shadowcaster": { c: "shadowcast", r: "50 SHADOWCAST" },
+      "Dark God": { c: "shadowcast", r: "20 SHADOWCAST" },
+      "Dark Hours": { c: "shadowcast", r: "35 SHADOWCAST" },
+      "Dark Rift": { c: "shadowcast", r: "60 SHADOWCAST [ PREREQUISITE: DARK HOURS ]" },
+      "Blighted Song": { c: "shadowcast", r: "10 SHADOWCAST 10 FORTITUDE [ PREREQUISITE: SHADOW CHAINS (MANTRA) ]" },
+      "Shadow Overflow": { c: "shadowcast", r: "55 SHADOWCAST [ PREREQUISITE: DARK GOD ]" },
+      "Singularity": { c: "shadowcast", r: "40 SHADOWCAST [ MUTUAL EXCLUSIVE: SIGHTLESS STILL ]" },
+      "Blackhole": { c: "shadowcast", r: "60 SHADOWCAST POWER 13 [ PREREQUISITE: SINGULARITY ]" },
+      "Sightless Still": { c: "shadowcast", r: "30 SHADOWCAST [ MUTUAL EXCLUSIVE: SINGULARITY ]" },
+      "Lasting Sorrow": { c: "shadowcast", r: "50 SHADOWCAST" },
+      "Dark Synergy": { c: "shadowcast", r: "45 SHADOWCAST [ PREREQUISITE: DARK GOD ]" },
+      "Dark Waltz": { c: "shadowcast", r: "90 SHADOWCAST [ PREREQUISITE: 90 LIGHT / 90 MEDIUM / 90 HEAVY ]" },
+      "Overwhelming Drain": { c: "shadowcast", r: "[ PREREQUISITE: SHADOW ERUPTION (MANTRA) ]" },
+      "Dark Replenishment": { c: "shadowcast", r: "50 SHADOWCAST 25 AGILITY [ PREREQUISITE: DARK GOD ]" },
+      "Pressure Detonation": { c: "shadowcast", r: "40 SHADOWCAST 60 GALEBREATH" },
+      "Flaming Flourish": { c: "flamecharm", r: "30 FLAMECHARM" },
+      "Meteor Impact": { c: "flamecharm", r: "25 FLAMECHARM" },
+      "Phoenix Impact": { c: "flamecharm", r: "40 FLAMECHARM [ PREREQUISITE: METEOR IMPACT ]" },
+      "Explosive Finish": { c: "flamecharm", r: "45 FLAMECHARM" },
+      "Agitating Spark": { c: "flamecharm", r: "40 FLAMECHARM" },
+      "Emperor Flame": { c: "flamecharm", r: "60 FLAMECHARM [ PREREQUISITE: AGITATING SPARK ]" },
+      "Mirage Clone": { c: "flamecharm", r: "65 FLAMECHARM" },
+      "Immolation": { c: "flamecharm", r: "40 FLAMECHARM [ PREREQUISITE: AGITATING SPARK ]" },
+      "Phoenix Flames": { c: "flamecharm", r: "NONE [ PREREQUISITE: AGITATING SPARK ] [ PREREQUISITE: IMMOLATION ]" },
+      "Dancing Steps": { c: "flamecharm", r: "35 FLAMECHARM 8 POWER" },
+      "Graceful Steps": { c: "flamecharm", r: "80 FLAMECHARM 13 POWER [ PREREQUISITE: DANCING STEPS ]" },
+      "Concussive Flash": { c: "flamecharm", r: "30 FLAMECHARM 25 STRENGTH" },
+      "The Final Act": { c: "flamecharm", r: "60 FLAMECHARM 13 POWER [ MUTUAL EXCLUSIVE: ERUPTION PATH : LAVA SERPENT ]" },
+      "Fan The Flames (broken)": { c: "flamecharm", r: "40 FLAMECHARM [ PREREQUISITE: INHALE ]" },
+      "Hell's Partisan": { c: "flamecharm", r: "35 FLAMECHARM [ PREREQUISITE: WARDING RADIANCE ]" },
+      "Warding Radiance": { c: "flamecharm", r: "30 FLAMECHARM 20 AGILITY" },
+      "Flamewalker": { c: "flamecharm", r: "40 FLAMECHARM 25 AGILITY [ PREREQUISITE: WARDING RADIANCE ]" },
+      "Cauterized Wounds": { c: "flamecharm", r: "40 FLAMECHARM 5 FORTITUDE" },
+      "Flame Within": { c: "flamecharm", r: "25 FLAMECHARM" },
+      "Azure Flames": { c: "flamecharm", r: "40 WILLPOWER 70 FLAMECHARM [ MUTUAL EXCLUSIVE: WRAITH PATH : TWISTED PUPPETS ]" },
+      "Controlled Combustion": { c: "flamecharm", r: "40 CHARISMA [ PREREQUISITE: AGITATING SPARK ]" },
+      "Eruption Path: Lava Serpent": { c: "flamecharm", r: "40 FLAMECHARM [ MUTUAL EXCLUSIVE: THE FINAL ACT ] [ MUTUAL EXCLUSIVE: WRAITH PATH : TWISTED PUPPETS ]" },
+      "Empowered Eruption": { c: "flamecharm", r: "50 FLAMECHARM [ PREREQUISITE: ERUPTION PATH : LAVA SERPENT ]" },
+      "Flash Point": { c: "flamecharm", r: "45 FLAMECHARM [ PREREQUISITE: ERUPTION PATH : LAVA SERPENT ]" },
+      "Scorched Earth": { c: "flamecharm", r: "75 FLAMECHARM [ PREREQUISITE: ERUPTION PATH : LAVA SERPENT ]" },
+      "The Floor is Lava": { c: "flamecharm", r: "100 FLAMECHARM [ PREREQUISITE: ERUPTION PATH : LAVA SERPENT, SCORCHED EARTH, FLASH POINT, EMPOWERED ERUPTION ]" },
+      "Volcanic Glass": { c: "flamecharm", r: "[ PREREQUISITE: ERUPTION PATH : LAVA SERPENT ] [ PREREQUISITE: GLASS PATH : CRYSTALLIZATION ]" },
+      "Wraith Path: Twisted Puppets": { c: "flamecharm", r: "40 FLAMECHARM 40 SHADOWCAST [ MUTUAL EXCLUSIVES: AZURE FLAMES, ERUPTION PATH : LAVA SERPENT ]" },
+      "Moths to a Flame": { c: "flamecharm", r: "40 FLAMECHARM 40 SHADOWCAST [ PREREQUISITE: WRAITH PATH : TWISTED PUPPETS ] [ MUTUAL EXCLUSIVE: AZURE FLAMES ]" },
+      "Burning Puppets": { c: "flamecharm", r: "40 FLAMECHARM 40 SHADOWCAST [ MUTUAL EXCLUSIVE: AZURE FLAMES ] [ PREREQUISITE: WRAITH PATH : TWISTED PUPPETS ]" },
+      "After Cut": { c: "galebreath", r: "40 GALEBREATH" },
+      "Inhale": { c: "galebreath", r: "60 GALEBREATH" },
+      "Maestro's Blade": { c: "galebreath", r: "60 GALEBREATH [ PREREQUISITE: INHALE ]" },
+      "Wind Step": { c: "galebreath", r: "40 GALEBREATH" },
+      "Air Pressure": { c: "galebreath", r: "50 GALEBREATH 20 AGILITY" },
+      "Tempest Wind": { c: "galebreath", r: "20 GALEBREATH [ PREREQUISITE: WIND BLADE ]" },
+      "Aerogliding": { c: "galebreath", r: "30 AGILITY 35 GALEBREATH" },
+      "Suffocating Impact": { c: "galebreath", r: "35 GALEBREATH 15 STRENGTH" },
+      "Stifled Jump": { c: "galebreath", r: "[ PREREQUISITE: SUFFOCATING IMPACT ]" },
+      "Silencer's Blade": { c: "galebreath", r: "60 GALEBREATH POWER 10" },
+      "A World Without Song": { c: "galebreath", r: "75 GALEBREATH [ PREREQUISITE: SILENCER'S BLADE ]" },
+      "Silencer's Song": { c: "galebreath", r: "100 GALEBREATH 100 WEAPON [ PREREQUISITE: SILENCER'S BLADE ]" },
+      "Haunted Gale": { c: "galebreath", r: "40 GALEBREATH 8 POWER" },
+      "Haunted Path: Specter": { c: "galebreath", r: "50 GALEBREATH [ PREREQUISITE: HAUNTED GALE ]" },
+      "Apparitions": { c: "galebreath", r: "50 GALEBREATH [ PREREQUISITE: HAUNTED PATH : SPECTER ]" },
+      "Phantom Step": { c: "galebreath", r: "55 GALEBREATH [ PREREQUISITE: HAUNTED PATH : SPECTER ]" },
+      "Vanishing Wraith": { c: "galebreath", r: "60 GALEBREATH [ PREREQUISITE: HAUNTED PATH : SPECTER ]" },
+      "Possession": { c: "galebreath", r: "75 GALEBREATH [ PREREQUISITE: HAUNTED PATH : SPECTER ]" },
+      "Berserk": { c: "strength", r: "80 STRENGTH" },
+      "Shield Breaker": { c: "strength", r: "60 STRENGTH" },
+      "Million Ton Piercer": { c: "strength", r: "90 STRENGTH" },
+      "Piercing Blow (broken)": { c: "strength", r: "100 STRENGTH" },
+      "Broken Ankles": { c: "strength", r: "70 STRENGTH" },
+      "Unwavering Resolve": { c: "strength", r: "40 STRENGTH" },
+      "Showstopper": { c: "strength", r: "40 STRENGTH" },
+      "Champion's Regalia": { c: "strength", r: "25 STRENGTH" },
+      "Collapsed Lung": { c: "strength", r: "100 STRENGTH" },
+      "Bulldozer": { c: "strength", r: "25 STRENGTH [ MUTUAL EXCLUSIVE: DAZING FINISHER ]" },
+      "Going Nowhere": { c: "strength", r: "25 STRENGTH 25 AGILITY" },
+      "Concussion": { c: "strength", r: "20 STRENGTH 15 FORTITUDE" },
+      "Lose Your Mind": { c: "strength", r: "30 STRENGTH 30 FORTITUDE" },
+      "Matador": { c: "strength", r: "20 STRENGTH 5 AGILITY" },
+      "Harsh Response": { c: "strength", r: "25 STRENGTH" },
+      "Precise Swing": { c: "strength", r: "25 STRENGTH 15 AGILITY" },
+      "Nullifying Clarity": { c: "strength", r: "15 STRENGTH 5 INTELLIGENCE" },
+      "Concussive Force": { c: "strength", r: "15 STRENGTH" },
+      "Strong Hold": { c: "strength", r: "30 STRENGTH 30 MEDIUM" },
+      "Pursuit": { c: "agility", r: "90 AGILITY" },
+      "Tap Dancer": { c: "agility", r: "60 AGILITY" },
+      "Cheap Shot": { c: "agility", r: "65 AGILITY" },
+      "Down Comes the Claw": { c: "agility", r: "75 AGILITY" },
+      "Maiming Claws": { c: "agility", r: "100 AGILITY [ PREREQUISITE: DOWN COMES THE CLAW ]" },
+      "Dustlunge": { c: "agility", r: "90 AGILITY [ PREREQUISITE: DEEP WOUND, LOWSTRIDE, UNSEEN THREAT ]" },
+      "Unseen Threat": { c: "agility", r: "60 AGILITY [ PREREQUISITE: DEEP WOUND ]" },
+      "Lights Out": { c: "agility", r: "55 AGILITY" },
+      "Deep Wound": { c: "agility", r: "35 AGILITY" },
+      "Lowstride": { c: "agility", r: "20 AGILITY" },
+      "Blood Thirsty": { c: "agility", r: "45 AGILITY" },
+      "Cut to the Chase": { c: "agility", r: "60 AGILITY" },
+      "Observation": { c: "agility", r: "20 AGILITY [ MUTUAL EXCLUSIVE: RISKY MOVES ]" },
+      "Safety Dance": { c: "agility", r: "20 AGILITY [ MUTUAL EXCLUSIVE: RISKY MOVES ]" },
+      "Risky Moves": { c: "agility", r: "25 AGILITY [ MUTUAL EXCLUSIVES: OBSERVATION, SAFETY DANCE ]" },
+      "Conditional Runner": { c: "agility", r: "25 AGILITY [ PREREQUISITE: SCAREDY CAT ] [ PREREQUISITE: ENDURANCE RUNNER ]" },
+      "Scaredy Cat": { c: "agility", r: "5 AGILITY" },
+      "Endurance Runner": { c: "agility", r: "25 AGILITY 25 FORTITUDE" },
+      "Fast Blade": { c: "agility", r: "20 AGILITY" },
+      "Lightspeed Reflexes": { c: "agility", r: "20 AGILITY 20 INTELLIGENCE" },
+      "Swift Rebound": { c: "agility", r: "15 AGILITY" },
+      "Evasive Expert": { c: "agility", r: "15 AGILITY [ PREREQUISITE: SWIFT REBOUND ]" },
+      "Steady Nerves": { c: "agility", r: "15 STRENGTH 45 AGILITY" },
+      "Spine Cutter": { c: "agility", r: "20 STRENGTH 25 AGILITY" },
+      "Blade Dancer": { c: "agility", r: "25 AGILITY" },
+      "Spinning Swordsman": { c: "agility", r: "20 AGILITY" },
+      "Speed Demon": { c: "agility", r: "25 AGILITY" },
+      "Oathless": { c: "agility", r: "12 AGILITY 12 POWER [ MUTUAL EXCLUSIVE: ALL OATHS ]" },
+      "Bear Trap": { c: "agility", r: "20 AGILITY 20 STRENGTH" },
+      "Time To Go": { c: "agility", r: "5 AGILITY" },
+      "Mythic Stability": { c: "fortitude", r: "85 FORTITUDE" },
+      "Reinforced Armor": { c: "fortitude", r: "90 FORTITUDE" },
+      "Defensive Reprisal": { c: "fortitude", r: "65 FORTITUDE" },
+      "Knuckle Guard": { c: "fortitude", r: "55 FORTITUDE 25 STRENGTH" },
+      "Exoskeleton": { c: "fortitude", r: "40 FORTITUDE" },
+      "To The Finish": { c: "fortitude", r: "50 FORTITUDE" },
+      "Turtle Shell": { c: "fortitude", r: "50 FORTITUDE [ PREREQUISITE: SHIELD ]" },
+      "Grand Support": { c: "fortitude", r: "40 FORTITUDE [ PREREQUISITE: REINFORCE (MANTRA) ]" },
+      "Imprevious Slumber": { c: "fortitude", r: "35 FORTITUDE" },
+      "Brassneck": { c: "fortitude", r: "35 FORTITUDE 30 STRENGTH" },
+      "Ready or Not": { c: "fortitude", r: "20 FORTITUDE" },
+      "Moving Fortress": { c: "fortitude", r: "5 FORTITUDE" },
+      "Braced Collapse": { c: "fortitude", r: "25 FORTITUDE" },
+      "Strong Stern": { c: "fortitude", r: "25 FORTITUDE 15 STRENGTH" },
+      "Brick Wall": { c: "willpower", r: "100 WILLPOWER 100 FORTITUDE" },
+      "Not a Scratch": { c: "willpower", r: "20 FORTITUDE 100 WILLPOWER" },
+      "Heretic's Sutra": { c: "willpower", r: "80 WILLPOWER" },
+      "Shared Misery": { c: "willpower", r: "85 WILLPOWER" },
+      "Unswayed": { c: "willpower", r: "75 WILLPOWER" },
+      "All The Dead Gods": { c: "willpower", r: "65 WILLPOWER 40 INTELLIGENCE" },
+      "Magical Resolve": { c: "willpower", r: "40 WILLPOWER" },
+      "Critical Attack": { c: "willpower", r: "25 WILLPOWER" },
+      "Disbelief": { c: "willpower", r: "25 WILLPOWER" },
+      "Last Resort": { c: "willpower", r: "35 WILLPOWER" },
+      "Ardour Scream": { c: "willpower", r: "40 WILLPOWER 15 STRENGTH [ PREREQUISITE: MURMUR: ARDOUR ]" },
+      "Underdawg": { c: "willpower", r: "30 WILLPOWER" },
+      "Perseverance": { c: "willpower", r: "30 FORTITUDE 30 WILLPOWER" },
+      "Firmly Planted": { c: "willpower", r: "15 WILLPOWER 15 FORTITUDE" },
+      "Battle Tendency": { c: "willpower", r: "15 WILLPOWER" },
+      "Savior": { c: "willpower", r: "15 WILLPOWER" },
+      "Charged Return": { c: "willpower", r: "20 WILLPOWER 15 STRENGTH" },
+      "Breathing Exercise": { c: "willpower", r: "5 WILLPOWER" },
+      "Conquer your Fears": { c: "willpower", r: "10 WILLPOWER" },
+      "Unwavering Focus": { c: "intelligence", r: "60 INTELLIGENCE 10 STRENGTH" },
+      "Hard Read": { c: "intelligence", r: "20 INTELLIGENCE" },
+      "Everchanging Aegis": { c: "intelligence", r: "25 INTELLIGENCE" },
+      "Approaching Singularity": { c: "intelligence", r: "80 INTELLIGENCE" },
+      "Absolute Pitch": { c: "intelligence", r: "100 INTELLIGENCE" },
+      "Master Craftsman": { c: "intelligence", r: "45 INTELLIGENCE" },
+      "Overflowing Dam": { c: "intelligence", r: "40 INTELLIGENCE" },
+      "Ether Absorption": { c: "intelligence", r: "15 INTELLIGENCE" },
+      "Ether Conduit": { c: "intelligence", r: "30 INTELLIGENCE" },
+      "Perfect Flash": { c: "intelligence", r: "25 INTELLIGENCE" },
+      "Pocket Bombs": { c: "intelligence", r: "25 INTELLIGENCE" },
+      "Incendiary Formula": { c: "intelligence", r: "NONE [ PREREQUISITE: POCKET BOMBS ]" },
+      "Foolish Outburst": { c: "intelligence", r: "50 INTELLIGENCE" },
+      "Eureka": { c: "intelligence", r: "30 INTELLIGENCE" },
+      "Mantra Permanence": { c: "intelligence", r: "20 INTELLIGENCE" },
+      "Neuroplasticity": { c: "intelligence", r: "35 CHARISMA / 35 INTELLIGENCE / 35 WILLPOWER (any)" },
+      "Charismatic Cast": { c: "charisma", r: "25 CHARISMA" },
+      "Lasting Charisma": { c: "charisma", r: "55 CHARISMA [ PREREQUISITE: CHARISMATIC CAST ]" },
+      "Narcissist": { c: "charisma", r: "60 CHARISMA [ PREREQUISITE: CHARISMATIC CAST ] [ MUTUAL EXCLUSIVE: TOUGH LOVE ]" },
+      "Tough Love": { c: "charisma", r: "25 CHARISMA [ PREREQUISITE: CHARISMATIC CAST ] [ MUTUAL EXCLUSIVE: NARCISSIST ]" },
+      "Manipulator": { c: "charisma", r: "60 CHARISMA [ PREREQUISITE: CHARISMATIC CAST ]" },
+      "Unnecessary Theatrics": { c: "charisma", r: "75 CHARISMA [ PREREQUISITE: CHARISMATIC CAST ]" },
+      "Dazing Finisher": { c: "charisma", r: "1 CHARISMA [ PREREQUISITES: CHARISMATIC CAST, LASTING CHARISMA, TOUGH LOVE ] [ MUTUAL EXCLUSIVE: BULLDOZER ]" },
+      "Golden Tongue": { c: "charisma", r: "40 CHARISMA" },
+      "Encore": { c: "charisma", r: "40 CHARISMA" },
+      "Callout": { c: "charisma", r: "20 CHARISMA" },
+      "Off Your Game": { c: "charisma", r: "90 CHARISMA" },
+      "Cornered Fool": { c: "charisma", r: "85 CHARISMA" },
+      "Rule Through Fear": { c: "charisma", r: "85 CHARISMA 50 STRENGTH" },
+      "Propagandist": { c: "charisma", r: "75 CHARISMA [ PREREQUISITE: SING (MANTRA) ]" },
+      "Driving Impact": { c: "weapon_style", r: "SPEAR EQUIPPED 30 MEDIUM" },
+      "Defensive Sweep": { c: "weapon_style", r: "SPEAR EQUIPPED 50 MEDIUM" },
+      "Blade's Edge": { c: "weapon_style", r: "SPEAR EQUIPPED 30 MEDIUM" },
+      "Justicar's Renewal": { c: "weapon_style", r: "JUS KARITA STYLE EQUIPPED" },
+      "Justicar's Prowess": { c: "weapon_style", r: "JUS KARITA STYLE EQUIPPED" },
+      "Flying Swiftkick": { c: "weapon_style", r: "JUS KARITA STYLE EQUIPPED [ PREREQUISITE: SWIFTKICK PRODIGY ]" },
+      "Swiftkick Prodigy": { c: "weapon_style", r: "JUS KARITA STYLE EQUIPPED" },
+      "Fists of Fortitude": { c: "weapon_style", r: "FIST STYLE EQUIPPED 20 FORTITUDE 20 STRENGTH" },
+      "Captain Etrea": { c: "weapon_style", r: "FIST STYLE EQUIPPED 20 FORTITUDE 30 STRENGTH [ PREREQUISITE: MOVING FORTRESS ]" },
+      "Trained Fist": { c: "weapon_style", r: "FIST STYLE EQUIPPED" },
+      "Dirty Boxing": { c: "weapon_style", r: "25 AGILITY [ PREREQUISITE: FIST STYLE EQUIPPED ]" },
+      "Pocket Sand": { c: "weapon_style", r: "20 STRENGTH 35 LIGHT [ PREREQUISITE: FIST STYLE ]" },
+      "Rending Impact": { c: "weapon_style", r: "40 HEAVY GREATAXE" },
+      "Impairing Blow": { c: "weapon_style", r: "30 HEAVY GREATAXE" },
+      "Brazen Blow": { c: "weapon_style", r: "30 HEAVY GREATAXE [ PREREQUISITE: IMPAIRING BLOW ]" },
+      "Heavy Fatigue": { c: "weapon_style", r: "40 HEAVY GREATAXE [ PREREQUISITE: IMPAIRING BLOW ]" },
+      "Switchblade": { c: "weapon_style", r: "50 WEAPON" },
+      "Brutal Momentum": { c: "weapon_style", r: "50 HEAVY GREATSWORD / GREATHAMMER" },
+      "Warrior's Swing": { c: "weapon_style", r: "30 HEAVY" },
+      "Heavy Hitter": { c: "weapon_style", r: "25 HEAVY 15 STRENGTH" },
+      "Punishing Blow": { c: "weapon_style", r: "20 HEAVY" },
+      "Destructive Recovery": { c: "weapon_style", r: "25 STRENGTH 40 HEAVY [ PREREQUISITE: GREATSWORD ]" },
+      "Unstoppable Force": { c: "weapon_style", r: "25 STRENGTH 40 HEAVY [ PREREQUISITE: UNWAVERING RESOLVE ] [ PREREQUISITE: GREATHAMMER ]" },
+      "Brain Rattler": { c: "weapon_style", r: "50 MEDIUM CLUB" },
+      "Dispatch": { c: "weapon_style", r: "55 MEDIUM CLUB" },
+      "Hammerfall": { c: "weapon_style", r: "35 MEDIUM CLUB" },
+      "Rapid Reload": { c: "weapon_style", r: "50 LIGHT [ PREREQUISITE: GUN ]" },
+      "Rapid Fire": { c: "weapon_style", r: "50 LIGHT [ PREREQUISITE: GUN ]" },
+      "Sleight of Hands": { c: "weapon_style", r: "50 LIGHT [ PREREQUISITE: GUN ]" },
+      "ULTRAKILL!": { c: "weapon_style", r: "55 LIGHT [ PREREQUISITE: RAPID FIRE ] [ PREREQUISITE: GUN ]" },
+      "Knife's Journey (broken)": { c: "weapon_style", r: "30 LIGHT" },
+      "Decisive Blow": { c: "weapon_style", r: "NONE [ PREREQUISITE: KNIFE'S JOURNEY ]" },
+      "Anxious Guard": { c: "general", r: "10 POWER" },
+      "Padded Armor": { c: "general", r: "3 POWER" },
+      "Steel Scales": { c: "general", r: "8 POWER [ PREREQUISITE: PADDED ARMOR ]" },
+      "Armor Conserver": { c: "general", r: "8 POWER" },
+      "Thresher Claws": { c: "general", r: "13 POWER" },
+      "Thresher Scales": { c: "general", r: "10 POWER" },
+      "Comeback Kid": { c: "general", r: "8 POWER" },
+      "Sunken Predator": { c: "general", r: "11 POWER" },
+      "Replenishing Knockout": { c: "general", r: "3 POWER" },
+      "Martyr": { c: "general", r: "3 POWER" },
+      "Triathlete": { c: "general", r: "1 POWER" },
+      "Pitcher": { c: "general", r: "1 POWER 5 STRENGTH 5 AGILITY" },
+      "Murmur: Ardour": { c: "general", r: "KILL PRIMADON" },
+      "Murmur: Rhythm": { c: "general", r: "KILL PRIMADON" },
+    };
+
+    const CATS = {
+      frostdraw: { l: "Frostdraw", e: "", d: "pretty good", color: "#00ffff" },
+      thundercall: { l: "Thundercall", e: "", d: "idk whats special about this maybe stun", color: "#fffef4" },
+      shadowcast: { l: "Shadowcast", e: "", d: "really good if you wanna steal ether", color: "#000000" },
+      flamecharm: { l: "Flamecharm", e: "", d: "good", color: "#ecc117" },
+      galebreath: { l: "Galebreath", e: "", d: "overall the current meta rn", color: "#b5ffcc" },
+      strength: { l: "Strength", e: "", d: "good for carryweight and posture strength" },
+      agility: { l: "Agility", e: "", d: "good for climbing and stuff" },
+      fortitude: { l: "Fortitude", e: "", d: "for hp" },
+      willpower: { l: "Willpower", e: "", d: "for sanity (but mainly used for heretics sutra and that 5 wp talent)" },
+      intelligence: { l: "Intelligence", e: "", d: "good for ether, bombs, candycanes" },
+      charisma: { l: "Charisma", e: "", d: "some niches" },
+      weapon_style: { l: "Weapon", e: "", d: "weapon & combat style specific talents" },
+      general: { l: "General", e: "", d: "unlocked by power (level)" },
+    };
+    const Weapons = {
+      "Acheron's Warspear": { stats: { EndLag: 0.6, Scaling_WeaponMedium: 6, Bleed: 0.2, Weight: 5, Penetration: 15, Length: 9, SwingSpeed: 0.7, Damage: 18 }, description: "...", sellRarity: "Legendary", type: "Spear" },
+      "Adretian Axe": { stats: { Scaling_WeaponHeavy: 7, SwingSpeed: 0.64, Length: 8, Weight: 5, Damage: 24 }, description: "A bound axe in the typical Adretian fashion.", sellRarity: "", type: "Greataxe" },
+      "Alloyed Adretian Axe": { stats: { Scaling_WeaponHeavy: 8, Chip: 10, Penetration: 10, SwingSpeed: 0.66, Length: 8, Weight: 7, Damage: 24 }, description: "A bound axe in the typical Adretian fashion.", sellRarity: "", type: "Greataxe" },
+      "Alloyed Canorian Axe": { stats: { Scaling_WeaponHeavy: 9, Penetration: 20, Chip: 10, SwingSpeed: 0.63, Length: 8, Weight: 8, Damage: 24 }, description: "An axe much like the ones once wielded by the Canor Swornfangs, loyal protectors of the early Adretian Empire.", sellRarity: "Common", type: "Greataxe" },
+      "Alloyed Cavalry Saber": { stats: { Penetration: 10, Scaling_WeaponMedium: 5.5, SwingSpeed: 0.75, Length: 8, Weight: 6, Damage: 22.5 }, description: "To those of the current world, the notion of cavalry is farfetched. Still, the cavalry saber lives on as a effective blade for raiding.", sellRarity: "Common", type: "Sword" },
+      "Alloyed Crescent Cleaver": { stats: { EndLag: 0.1, Chip: 20, Bleed: 0.95, Weight: 9, Scaling_WeaponHeavy: 10, Length: 9, SwingSpeed: 0.6, Damage: 22.4 }, description: "Greatblades like these are often used by monster hunters, the serrated blade ensuring that even if their quarry flees, they need only follow the blood.", sellRarity: "", type: "Greatsword" },
+      "Alloyed Dawnshot": { stats: { Weight: 2.5, SwingSpeed: 0.68, Scaling_WeaponLight: 12, Length: 10.5, Damage: 16 }, description: "With an almost flawless silver sheen that prevents corrosion from saltwater, the Dawnshot was purpose-built by Rosen for his lengthy travels at sea. Its short range is compensated for by the almost wrist-snapping kickback of four barrels. Although, with the Summer Company Cannon making most naval investments in their territories obsolete, this weapon has fallen out of production.", sellRarity: "", type: "Gun" },
+      "Alloyed Falchion": { stats: { Length: 8, Penetration: 20, Scaling_WeaponMedium: 7, SwingSpeed: 0.715, Weight: 4, SwingSpeedMod: 0.195, Damage: 16 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "Alloyed Forge Greathammer": { stats: { Scaling_WeaponHeavy: 8, SwingSpeed: 0.61, Weight: 9.5, Length: 9, Damage: 25.5 }, description: "A hammer of exceptionally fine make, a replica of a famous hammer wielded by a Canor warlord during the First Century of the New World.", sellRarity: "", type: "Greathammer" },
+      "Alloyed Halberd": { stats: { Scaling_WeaponHeavy: 8, Penetration: 15, SwingSpeed: 0.6, Length: 9, Weight: 6, Damage: 24 }, description: "A sturdy axe perfect for splitting bone.", sellRarity: "Uncommon", type: "Greataxe" },
+      "Alloyed Inheritor": { stats: { Scaling_WeaponHeavy: 8, Penetration: 10, SwingSpeed: 0.65, Weight: 8, Length: 8.5, Damage: 24 }, description: "The Scholars of Markor, said to catalog the world itself, travel from land to land collecting information by force of their blades. Mastering the styles of combat from various stretches of the sea, they practice their art through the blade itself.", sellRarity: "", type: "Greatsword" },
+      "Alloyed Katana": { stats: { Scaling_WeaponMedium: 7, Chip: 10, Penetration: 10, Weight: 5, Length: 8, SwingSpeedMod: 0.08, SwingSpeed: 0.75, Damage: 20 }, description: "An exquisite blade of Etrean make, it's said to have put the early Kingdom of Etrea's name on the map.", sellRarity: "", type: "Sword" },
+      "Alloyed Messer": { stats: { Chip: 15, Penetration: 15, Scaling_WeaponMedium: 6, SwingSpeed: 0.73, Length: 7.5, Weight: 5, Damage: 21 }, description: "Considered by many to be an overgrown kitchen knife, the Messer is a favorite of rangers and beast hunters the world alike.", sellRarity: "Common", type: "Sword" },
+      "Alloyed Officer Saber": { stats: { Chip: 10, Scaling_WeaponMedium: 4.8, SwingSpeed: 0.75, Length: 8, Weight: 6, Damage: 23 }, description: "The characteristic saber of an Authority Officer. Typically used in Authority raids on disputed territories.", sellRarity: "Common", type: "Sword" },
+      "Alloyed Scalesplitter": { stats: { Penetration: 15, Scaling_WeaponMedium: 6, SwingSpeed: 0.71, Length: 8, Weight: 5, Damage: 20 }, description: "An ancient Etrean twinblade, recently repurposed and refurbished with alloys of the contemporary world, taken from the void's grasp and returned to life. Now this weapon, once worn by time and war, has been sharpened and restored, given another chance to taste glory once more. With its renewed form, it stands as a fusion of old-world craftmanship and modern innovation, ready to carve its name into history again with you.", sellRarity: "", type: "Twinblade" },
+      "Alloyed Steel Maul": { stats: { Scaling_WeaponHeavy: 8, Penetration: 10, EndLag: 0.1, SwingSpeed: 0.65, Weight: 7, Length: 9, Damage: 24 }, description: "A sturdy maul perfect for knocking walls and people down alike.", sellRarity: "", type: "Greathammer" },
+      "Alloyed Tanto": { stats: { SwingSpeed: 0.99, Penetration: 5, Weight: 3, Scaling_WeaponLight: 8, Length: 6.5, Damage: 16 }, description: "A dagger forged by a Etrean smith, the Tanto is said to bear the same durability as the Katana, but in a smaller profile.", sellRarity: "Mythic", type: "Dagger" },
+      "Alloyed Trident Spear": { stats: { Scaling_WeaponMedium: 7, Penetration: 25, EndLag: 0.6, SwingSpeed: 0.68, Length: 9, Weight: 5, Damage: 19 }, description: "A spear perfect for poking at a safe distance.", sellRarity: "", type: "Spear" },
+      "Alloyed Vigil Longsword": { stats: { Length: 8, Penetration: 20, Scaling_WeaponMedium: 7.5, SwingSpeed: 0.75, Weight: 5, SwingSpeedMod: 0.08, Damage: 20 }, description: "Despite the popularity of the Katana, the Vigil Longsword represents Etrea's need for more cost-efficient production processes in blades. Regarded as an equally fine blade, nonetheless.", sellRarity: "", type: "Sword" },
+      "Alloyed Whaling Knife": { stats: { Length: 6, Penetration: 15, SwingSpeed: 0.98, Scaling_WeaponLight: 8, Weight: 4, Damage: 15 }, description: "The Knife of one of the infamous Silver Whalers, mercenaries and assassins feared and reviled the world over", sellRarity: "Mythic", type: "Dagger" },
+      "Alloyed Zweihander": { stats: { Scaling_WeaponHeavy: 10, Penetration: 10, EndLag: 0.1, SwingSpeed: 0.68, Weight: 7, Length: 9, Damage: 23 }, description: "Popularised by the Canor Borderwatchers, the Zweihander is as fearsome as it is heavy.", sellRarity: "", type: "Greatsword" },
+      "Anklets of Alsin": { stats: { Weight: 3, Chip: 10, Penetration: 15, SwingSpeed: 0.88, Scaling_WeaponLight: 9, Length: 6.5, Damage: 13.5 }, description: "[REQUIRES A KICK STYLE]", sellRarity: "", type: "Fist" },
+      "Apprentice Rapier": { stats: { Length: 8, SwingSpeed: 0.8, Scaling_WeaponLight: 6, Weight: 4, Damage: 13 }, description: "Although fragile in appearance, this beginner's blade has been the starting point for many Pathfinders beginning their journey.", sellRarity: "", type: "Rapier" },
+      "Avenger": { spec: 1, stats: { Scaling_WeaponHeavy: 6.5, EndLag: 0.1, SwingSpeed: 0.66, Weight: 8, Length: 8.5, Damage: 21 }, description: "A greatsword passed down by your ancestors.", sellRarity: "", type: "Greatsword" },
+      "Battleaxe": { stats: { Scaling_WeaponHeavy: 5, SwingSpeed: 0.65, Length: 8, Weight: 6, Damage: 20 }, description: "A sturdy axe perfect for splitting bone.", sellRarity: "Common", type: "Greataxe" },
+      "Bloodtide Trident": { spec: 1,stats: { Scaling_WeaponMedium: 2.5, Penetration: 10, EndLag: 0.75, SwingSpeed: 0.675, Length: 9, Weight: 5, Damage: 17 }, description: "...", sellRarity: "", type: "Spear" },
+      "Boltcrusher": { spec: 1,stats: { EndLag: 0.15, Chip: 5, Scaling_ElementLightning: 7, Scaling_WeaponHeavy: 4.2, Weight: 8, Penetration: 20, Length: 8.5, SwingSpeed: 0.65, Damage: 25 }, description: "A cutting-edge Deepdelver creation, uniquely modified from their renowned explosive picks, this boring tool is designed to quarry and demolish the deep's toughest materials - and those who can't uphold up their end of a deal. Infused with crackling Thundercall, this powerhouse channels booming lightning with every strike, reducing rock to rubble and foes to fragments. From depths to peaks across the land, the Union's tools ignite; a path is blown. Onwards we march, powered by a spark.", sellRarity: "", type: "Greathammer" },
+      "Bone Greathammer": { halloween: 1, stats: { Scaling_WeaponHeavy: 7.5, Penetration: 35, SwingSpeed: 0.65, Weight: 10, Length: 11, Damage: 23 }, description: "Hammer made out of Full Bone, can deliver a devastating bone crushing slam.", sellRarity: "Mythic", type: "Greataxe" },
+      "Brigis": { halloween: 1, stats: { Scaling_Strength: 2, Length: 6.5, Penetration: 25, SwingSpeed: 0.74, Scaling_WeaponLight: 4, Weight: 3, Damage: 15 }, description: "i feel rizzy", sellRarity: "Legendary", type: "Sword" },
+      "Broodalloy Cestus": { stats: { Weight: 5.5, Penetration: 20, SwingSpeed: 0.82, Scaling_WeaponLight: 9.5, Length: 6, Damage: 16.5 }, description: "You've done the unthinkable... merging nature and metal into a brutal instrument of destruction. The raw purple sheen of untreated pluripotent alloys twists through the craggy gnarled texture of the brute's skin, mirroring the crushing fists of Mudskipper Broodlords. Though not made from authentic materials, its added weight and durability are sure to leave no foe standing.  [REQUIRES A FIST STYLE]", sellRarity: "Rare", type: "Fist" },
+      "Candy Cane": { stats: { Length: 9.5, SwingSpeed: 0.8, Scaling_WeaponLight: 7, Weight: 4, Damage: 17.5 }, description: "...", sellRarity: "", type: "Rapier" },
+      "Canor Fang": { stats: { SwingSpeed: 0.98, Penetration: 5, Weight: 5, Scaling_WeaponLight: 10, Length: 6, Damage: 10 }, description: "...", sellRarity: "Mythic", type: "Dagger" },
+      "Canorian Axe": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.15, SwingSpeed: 0.63, Length: 8, Weight: 6, Damage: 23.5 }, description: "An axe much like the ones once wielded by the Canor Swornfangs, loyal protectors of the early Adretian Empire.", sellRarity: "Common", type: "Greataxe" },
+      "Cavalry Saber": { stats: { Scaling_WeaponMedium: 5, SwingSpeed: 0.75, Length: 8, Weight: 5, Damage: 21 }, description: "To those of the current world, the notion of cavalry is farfetched. Still, the cavalry saber lives on as a effective blade for raiding.", sellRarity: "Common", type: "Sword" },
+      "Cerulean Thread": { spec: 1, stats: { Length: 6, Penetration: 25, EndLag: 0.05, SwingSpeed: 0.86, Scaling_WeaponLight: 7.5, Weight: 4, Damage: 15 }, description: "Weapon of a former student of the 4th Prophet who quickly moved up through the ranks of the Ministry due to their own ingenuity and modifications upon Zieers puppet strings. Met their demise at the hands of the Maestro, posing as a Vigil Instructor in order to gather intel. Seeing through the disguise, the Maestro challenged the applicant instructor and forced them to reveal their hand. With no more tricks left up their sleeve, they fell before the Maestros arsenal, their own handiwork joining the collection.", sellRarity: "Mythic", type: "Dagger" },
+      "Champion's Dagger": { stats: { SwingSpeed: 0.9, Chip: 10, EndLag: 0.05, Weight: 4, Scaling_WeaponLight: 8, Length: 6, Damage: 14.5 }, description: "A blade heralded by those who have braved the challenges of 'The Golden Rat'. Befitting of a champion, its metal shines as bright as the spirit of the Golden Rat itself.", sellRarity: "Mythic", type: "Dagger" },
+      "Champion's Sword": { stats: { Length: 8, Scaling_WeaponMedium: 6.5, SwingSpeed: 0.77, Weight: 4, SwingSpeedMod: 0.15, Damage: 19 }, description: "The challenges of 'The Golden Rat'. Befitting of a champion, its metal shines as bright as the spirit of the Golden Rat itself.", sellRarity: "", type: "Sword" },
+      "Chorus of Agonies": { stats: { Scaling_WeaponHeavy: 11, Chip: 25, EndLag: 0.1, SwingSpeed: 0.62, Length: 10, Weight: 10, Damage: 27 }, description: "Towering over the trial like a monument, Enmity's presence draws the very air from your lungs, oppressive and unyielding, as if it too was full of scorn. Now in your grasp, the vile axe pulses with a dreadful rhythm, a heartbeat woven from the anguish of innumerable tortured souls. The air thickens under its weight, every inch of the weapon's twisted form resenting its own existence. The damned enforcers within wail for release, their mournful song clawing at your spirit. Yet, stood firm, you meet the abyss with defiance. The Chorus of Agonies envelops you.", sellRarity: "", type: "Greataxe" },
+      "Coral Cestus": { stats: { Weight: 5, Penetration: 10, SwingSpeed: 0.82, Scaling_WeaponLight: 9.5, Length: 6, Damage: 14 }, description: "Cestus fashioned from the remains of a Mudskipper Brute. [REQUIRES A FIST STYLE]", sellRarity: "Rare", type: "Fist" },
+      "Crescendo": { stats: { Scaling_WeaponMedium: 6, SwingSpeed: 0.72, Penetration: 5, Length: 7.5, Weight: 6, Damage: 22 }, description: "...", sellRarity: "", type: "Twinblade" },
+      "Crescent Cleaver": { stats: { Scaling_WeaponHeavy: 8, Bleed: 0.9, EndLag: 0.1, SwingSpeed: 0.6, Weight: 9, Length: 9, Damage: 22.4 }, description: "Greatblades like these are often used by monster hunters, the serrated blade ensuring that even if their quarry flees, they need only follow the blood.", sellRarity: "", type: "Greatsword" },
+      "Crypt Blade": { stats: { Scaling_WeaponHeavy: 4, Scaling_ElementShadow: 9, EndLag: 0.15, SwingSpeed: 0.64, Weight: 9, Length: 9, Damage: 22 }, description: "A blade said to have been forged from the remains of the Last Dead, the last fortunate souls at the end of the Canticlysm to be spared the Drowning.", sellRarity: "Mythic", type: "Greatsword" },
+      "Curved Blade of Shadow": { stats: { Scaling_WeaponMedium: 6.5, Scaling_ElementShadow: 4.5, Length: 8, Weight: 5, Penetration: 40, SwingSpeedMod: 0.14, SwingSpeed: 0.82, Damage: 33.5 }, description: "A prized blade supposedly forged during the Canticlysm by the first Galebreathers.", sellRarity: "Legendary", type: "Sword" },
+      "Curved Blade of Winds": { stats: { Scaling_WeaponMedium: 5, Penetration: 15, Length: 8, Weight: 5, Scaling_ElementWind: 5, SwingSpeedMod: 0.14, SwingSpeed: 0.74, Damage: 17.5 }, description: "A prized blade supposedly forged during the Canticlysm by the first Galebreathers.", sellRarity: "Legendary", type: "Sword" },
+      "Darkalloy Greatsword": { stats: { Scaling_WeaponHeavy: 8, Chip: 10, EndLag: 0.1, SwingSpeed: 0.6, Weight: 9, Length: 9, Damage: 26 }, description: "Wrought from durable darksteel, these blades were popularised by the Ignition Union as tools against the Deep.", sellRarity: "", type: "Greatsword" },
+      "Darksteel Greatsword": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.1, SwingSpeed: 0.6, Weight: 9, Length: 9, Damage: 26 }, description: "Wrought from durable darksteel, these blades were popularised by the Ignition Union as tools against the Deep.", sellRarity: "", type: "Greatsword" },
+      "Darth Maul's Lightsaber": { stats: { Penetration: 20, Scaling_WeaponMedium: 5, SwingSpeed: 0.68, Length: 8, Weight: 7.5, Damage: 18 }, description: "Have the lambs stopped screaming?", sellRarity: "", type: "Twinblade" },
+      "Dawnshot": { stats: { Weight: 1, SwingSpeed: 0.68, Scaling_WeaponLight: 12, Length: 10.5, Damage: 14 }, description: "With an almost flawless silver sheen that prevents corrosion from saltwater, the Dawnshot was purpose-built by Rosen for his lengthy travels at sea. Its short range is compensated for by the almost wrist-snapping kickback of four barrels. Although, with the Summer Company Cannon making most naval investments in their territories obsolete, this weapon has fallen out of production.", sellRarity: "", type: "Gun" },
+      "Death's Reverie": { stats: { Scaling_WeaponMedium: 5, Chip: 5, Bleed: 0.3, Weight: 7.5, Penetration: 20, Length: 8, SwingSpeed: 0.68, Damage: 18 }, description: "Have the lambs stopped screaming?", sellRarity: "", type: "Twinblade" },
+      "Deepspindle": { stats: { Scaling_ElementShadow: 9, Penetration: 20, SwingSpeed: 0.8, Weight: 5, Scaling_WeaponLight: 4, Length: 8, Damage: 14 }, description: "This rapiers blade was not forged in the traditional sense; rather, it was grown from the darkest scoria of the abyss, taking shape as a twisting, malevolent shadow. Tales speak of a noble warrior from Celtor who, after discovering ancient ministry passages, was consumed by a twisted curiosity and nurtured this vile blade. As the dark ritual progressed, the warriors soul was pulled deeper into darkness, their essence decaying and their mind unraveling into madness. Ultimately succumbing to the depths, thus stirs the Deepspindle.", sellRarity: "Mythic", type: "Rapier" },
+      "Divine Axe": { crazy_slots: 1, stats: { Scaling_WeaponHeavy: 8, SwingSpeed: 0.6, Length: 10.1, Weight: 8, Damage: 28 }, description: "A weapon brought out from your soul.", sellRarity: "", type: "Greataxe" },
+      "Divine Dagger": { crazy_slots: 1, stats: { Length: 6, EndLag: 0.05, SwingSpeed: 0.98, Scaling_WeaponLight: 7, Weight: 4, Damage: 18 }, description: "A weapon brought out from your soul.", sellRarity: "", type: "Dagger" },
+      "Divine Greatsword": { crazy_slots: 1, stats: { Scaling_WeaponHeavy: 7, EndLag: 0.25, SwingSpeed: 0.63, Weight: 8.5, Length: 9.2, Damage: 26 }, description: "A weapon brought out from your soul.", sellRarity: "", type: "Greatsword" },
+      "Divine Longsword": { crazy_slots: 1, stats: { Length: 9, Scaling_WeaponMedium: 7, SwingSpeed: 0.8, Weight: 5.5, SwingSpeedMod: 0.195, Damage: 22 }, description: "A weapon brought out from your soul.", sellRarity: "", type: "Sword" },
+      "Divine Spear": { crazy_slots: 1, stats: { Scaling_WeaponMedium: 7.6, SwingSpeed: 0.7, Length: 10, Weight: 5, Damage: 21 }, description: "A weapon brought out from your soul.", sellRarity: "", type: "Spear" },
+      "Dragoon": { stats: { Weight: 3.5, SwingSpeed: 0.72, Scaling_WeaponLight: 12, Length: 11, Damage: 16 }, description: "The mechanisms of this firearm are more of a meticulous make then their mass-produced cousins, and are often found as collector's items above the mastlepieces of the wealthy.", sellRarity: "", type: "Gun" },
+      "Drakemaw Gauntlets": { halloween: 1, stats: { Weight: 4, Penetration: 10, Bleed: 0.8, SwingSpeed: 0.82, Scaling_WeaponLight: 8, Length: 6, Damage: 15 }, description: "...", sellRarity: "", type: "Fist" },
+      "Enforcer's Axe": { stats: { Scaling_WeaponHeavy: 10, SwingSpeed: 0.57, Length: 8.5, Weight: 8, Damage: 26 }, description: "The titans known as Enforcers are faithful servants of the Cathedral, rarely found outside its grounds. It is said that they are the tortured souls of those who have failed the Trial, twisted into fiends that deny mortal souls salvation.", sellRarity: "Rare", type: "Greataxe" },
+      "Enforcer's Blade": { stats: { Scaling_WeaponHeavy: 9, EndLag: 0.56, SwingSpeed: 0.59, Weight: 10, Length: 8.5, Damage: 25 }, description: "A blade said to have been forged from the remains of the Last Dead, the last fortunate souls at the end of the Canticlysm to be spared the Drowning.", sellRarity: "", type: "Greatsword" },
+      "Enforcer's Hammer": { stats: { Scaling_WeaponHeavy: 9, EndLag: 0.1, SwingSpeed: 0.6, Length: 8.5, Weight: 12, Damage: 25 }, description: "A blade said to have been forged from the remains of the Last Dead, the last fortunate souls at the end of the Canticlysm to be spared the Drowning.", sellRarity: "Uncommon", type: "Greathammer" },
+      "Ethiron Curseshield": { stats: { Scaling_Offhand: 0, Weight: 7 }, description: "A shield forged to brave the harshest of Ethironal winds, handcrafted by those who sought fortune amidst ruin.", sellRarity: "", type: "Shield" },
+      "Evanspear Greataxe": { stats: { Scaling_WeaponHeavy: 9.5, Bleed: 0.8, SwingSpeed: 0.73, Length: 8.5, Weight: 8, Damage: 25 }, description: "...", sellRarity: "Rare", type: "Greataxe" },
+      "Falchion": { stats: { Length: 8, Scaling_WeaponMedium: 6, SwingSpeed: 0.735, Weight: 4, SwingSpeedMod: 0.195, Damage: 16 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "Fang and Coil": { stats: { Weight: 3, Penetration: 20, SwingSpeed: 0.72, Scaling_WeaponLight: 7, Length: 6, Damage: 12 }, description: "Adopt the path of the serpent.", sellRarity: "", type: "Fist" },
+      "Femur Breaker": { stats: { Penetration: 15, Scaling_WeaponMedium: 6, SwingSpeed: 0.75, Length: 8, Weight: 7, Damage: 21 }, description: "", sellRarity: "", type: "Club" },
+      "First Light": { stats: { Scaling_WeaponHeavy: 8, Penetration: 30, EndLag: 0, SwingSpeed: 0.62, Weight: 10, Length: 8.5, Damage: 25.5 }, description: "Blade of Venn Kaelhand, a disciple of Pleeksty, who immersed themself much too deeply in the study of beasts altered by Korlfiend's influence. Met their fate in the jaws of a unique specimen of Megalodaunt said to have been exposed to the vents of Korilfiend.", sellRarity: "", type: "Greatsword" },
+      "Fist": { stats: { Weight: 1, SwingSpeed: 0.8, Scaling_WeaponLight: 10, Length: 15, Damage: 24 }, description: "...", sellRarity: "", type: "Fist" },
+      "Flamekeeper Cestus": { stats: { Weight: 5, Penetration: 5, SwingSpeed: 0.86, Scaling_WeaponLight: 9.5, Length: 6, Damage: 15.5 }, description: "...", sellRarity: "", type: "Fist" },
+      "Flareblood Kamas": { stats: { EndLag: 0.05, Scaling_WeaponLight: 10, Scaling_Intelligence: 2, Weight: 4, Penetration: 30, Length: 6, SwingSpeed: 0.7, Damage: 14 }, description: "A twisted weapon devised by the Scholar of the Burning Blood, Chaser, during his apprenticeship under the Second Prophet. A seething concoction of tainted blood swirls within, waiting to be unburdened of its prison.", sellRarity: "Mythic", type: "Dagger" },
+      "Flintlock": { stats: { Weight: 1, SwingSpeed: 0.68, Scaling_WeaponLight: 12, Length: 10, Damage: 11 }, description: "The mechanisms of this firearm are more of a meticulous make then their mass-produced cousins, and are often found as collector's items above the mastlepieces of the wealthy.", sellRarity: "", type: "Gun" },
+      "Forge Greathammer": { stats: { Scaling_WeaponHeavy: 8, EndLag: 0.1, SwingSpeed: 0.6, Weight: 9, Length: 6, Damage: 24 }, description: "A hammer of exceptionally fine make, a replica of a famous hammer wielded by a Canor warlord during the First Century of the New World.", sellRarity: "", type: "Greathammer" },
+      "Forgotten Gladius": { stats: { Length: 7.5, Penetration: 13, Scaling_WeaponMedium: 7, SwingSpeed: 0.73, Weight: 5, SwingSpeedMod: 0.14, Damage: 18 }, description: "Often found at the hip of officers on horseback during the Canticlysm, it sadly remained for many years only as a curio for petty nobles to fawn over in the early days after the Tides. Despite its moniker, it was brought back into the vogue by young naval officers of the Central Authority who saw combat value in the trinkets they'd inherited, dragging the blade out from obscurity.", sellRarity: "Rare", type: "Sword" },
+      "Frost Dragoon": { spec: 1, stats: { Scaling_ElementIce: 2, Weight: 3.5, Penetration: 5, SwingSpeed: 0.72, Scaling_WeaponLight: 12, Length: 11, Damage: 16 }, description: "The mechanisms of this firearm are more of a meticulous make then their mass-produced cousins, and are often found as collector's items above the mastlepieces of the wealthy.", sellRarity: "", type: "Gun" },
+      "Frozen Cestus": { spec: 1, stats: { Scaling_ElementIce: 1, Weight: 5, Penetration: 5, SwingSpeed: 0.87, Scaling_WeaponLight: 6, Length: 6, Damage: 15 }, description: "Cestus used by members of the legion. [REQUIRES A FIST STYLE]", sellRarity: "", type: "Fist" },
+      "Gaunts of Enmity": { stats: { Weight: 6, Chip: 20, SwingSpeed: 0.86, Scaling_WeaponLight: 11, Length: 6, Damage: 15 }, description: "Gauntlets of great strength, forged long ago to fortify the wielder and shatter the souls of the weak.", sellRarity: "", type: "Fist" },
+      "Gilded Knife": { stats: { SwingSpeed: 0.98, Weight: 4, Scaling_WeaponLight: 8, Length: 6, Damage: 13 }, description: "A knife of fine craftmanship, bearing an equally fine sharpness.", sellRarity: "Rare", type: "Dagger" },
+      "Golden Swordfish": { stats: { Penetration: 20, SwingSpeed: 0.82, Scaling_WeaponLight: 8, Length: 8.1, Weight: 5, Damage: 15 }, description: "The fabled catch of an angler without parallel. The sea trembles in your wake.", sellRarity: "", type: "Rapier" },
+      "Gourdguard Shield": { halloween: 1, stats: { Scaling_Offhand: 0, Weight: 7 }, description: "pumpkin", sellRarity: "", type: "Shield" },
+      "Gran Sudaruska": { stats: { Weight: 6, Scaling_WeaponHeavy: 4, SwingSpeed: 0.65, Scaling_ElementIce: 8, Length: 8.5, Damage: 24 }, description: "In her dying breaths, Sudaruska the Unbroken infused her very being into this weapon, cutting through hundreds of ancient Ministry as the lost front to keep Minityrsa safe. Now that her mortal shell is no more, she has become Gran Sudaruska.", sellRarity: "", type: "Greataxe" },
+      "Grand Railblade": { stats: { Scaling_WeaponHeavy: 13, Weight: 8, SwingSpeed: 0.82, Penetration: 25, Length: 11, Damage: 30 }, description: "A now legendary blade devised by the Ignition Union to exterminate the terrifying foes lurking deeper within the Depths. Said to constantly generate a warding heat that protects the wearer against the insidious chill of the Eternal Gale.", sellRarity: "Mythic", type: "Greatsword" },
+      "Great Maul": { stats: { EndLag: 0.1, Chip: 10, Scaling_WeaponHeavy: 8, Weight: 10, Penetration: 5, Length: 9, SwingSpeed: 0.65, Damage: 25 }, description: "...", sellRarity: "", type: "Greathammer" },
+      "Guiding Star": { stats: { Scaling_Mind: 3, Scaling_WeaponMedium: 10, SwingSpeed: 1, Length: 12, Weight: 5, Damage: 14 }, description: "A bow of sacred reverence for the Children of Navae, the Guiding Star is wielded during the Festival of Lights by aspirants who seek to prove themselves in its trials. During these trials, competitors must hunt a wolf blindfolded, using only their other senses to track and remain hidden. Should the wolf sink its fangs into the competitor, or leave any mark upon them, they are disqualified. The bow itself is also somewhat of a curiosity, as its arrows are conjured from the Ether of its wielder and guided by their own will. Many of the previous winners of the trials speak of the Guiding Star speaking to them in a soothing voice, pushing them in the right direction.", sellRarity: "", type: "Bow" },
+      "Halberd": { stats: { Scaling_WeaponHeavy: 7, SwingSpeed: 0.6, Length: 9, Weight: 5, Damage: 22 }, description: "A sturdy axe perfect for splitting bone.", sellRarity: "Uncommon", type: "Greataxe" },
+      "Hallowscleave": { halloween: 1, stats: { Length: 8, Penetration: 25, Scaling_WeaponMedium: 7, SwingSpeed: 0.75, Weight: 6, SwingSpeedMod: 0.08, Damage: 19 }, description: "A blade of fine craft, likely an heirloom of whoever held the blade before it was pilfered from their remains.", sellRarity: "Common", type: "Sword" },
+      "Heavy Hands": { spec: 1,stats: { Scaling_WeaponHeavy: 10, Penetration: 5, EndLag: 0.15, SwingSpeed: 0.85, Weight: 5, Length: 6, Damage: 20 }, description: "Cestus used by members of the legion. [REQUIRES A FIST STYLE]", sellRarity: "", type: "Fist" },
+      "Hero's Blade of Flame": { stats: { Scaling_ElementFire: 5.5, Penetration: 10, SwingSpeed: 0.75, Weight: 5, Length: 8, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the overwhelming heat of geothermal vents.", sellRarity: "", type: "Sword" },
+      "Hero's Blade of Frost": { stats: { Weight: 5, SwingSpeed: 0.75, Scaling_ElementIce: 5.5, Length: 8, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the freezing oblivion of the cold wastes.", sellRarity: "", type: "Sword" },
+      "Hero's Blade of Lightning": { stats: { Penetration: 10, Scaling_ElementLightning: 5.5, SwingSpeed: 0.75, Weight: 5, Length: 8, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the hair-raising trepidation for the incoming storm.", sellRarity: "", type: "Sword" },
+      "Hero's Blade of Shadow": { stats: { Scaling_ElementShadow: 5.5, Penetration: 10, SwingSpeed: 0.75, Weight: 5, Length: 8, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the merciless void of the darkest shadows.", sellRarity: "", type: "Sword" },
+      "Hero's Blade of Wind": { stats: { Weight: 5, Penetration: 10, SwingSpeed: 0.75, Scaling_ElementWind: 5.5, Length: 8, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the inescapable force of a hurricane.", sellRarity: "", type: "Sword" },
+      "Hivelord Hubris": { stats: { Scaling_WeaponHeavy: 8, Penetration: 5, EndLag: 0.1, SwingSpeed: 0.56, Weight: 9, Length: 10, Damage: 28 }, description: "...This isnt' very efficient.", sellRarity: "", type: "Greathammer" },
+      "Ignition Deepcrusher": { stats: { Penetration: 10, Scaling_WeaponMedium: 7.5, SwingSpeed: 0.725, Length: 8, Weight: 5, Damage: 22.3 }, description: "...", sellRarity: "Legendary", type: "Club" },
+      "Imperator's Edge": { stats: { Scaling_WeaponMedium: 2, Scaling_Fortitude: 4, Scaling_Strength: 3, Weight: 7, Penetration: 20, Length: 11, SwingSpeed: 0.75, Damage: 15 }, description: "A gargantuan greatspear, its tip infused with the very essence of light, shines like a beacon of unyielding strength and fortitude. Carried at the forefront of the Hundred Legions, it illuminates their path with a blinding brilliance, a symbol of resilience that pierces the shadows and leads them to inevitable victory.", sellRarity: "Mythic", type: "Spear" },
+      "Imperial Staff": { stats: { Scaling_Strength: 3, SwingSpeed: 0.76, Scaling_WeaponMedium: 5, Penetration: 10, Weight: 6, Length: 8, Damage: 19.5 }, description: "Legendary staff of a Legion Praetorian of ages past. In his hands its said to have wiped whole towns off the face of the map with one swing, and to have rapidly expanded the outer reaches of their territory. The veracity of these claims is of some dispute, but the peculiar properties of the weapon do lend some credence to its reputation.", sellRarity: "Mythic", type: "Spear" },
+      "Infinity Blade": { spec: 1, stats: { Scaling_WeaponMedium: 5, SwingSpeed: 0.65, Penetration: 10, Length: 11, Weight: 13, Damage: 29 }, description: "A blade forged from pale metal recovered from Celestial crash-sites by Starkindred artisans. Nearly weightless, this type of blade is a staple in the West amongst adherents of the faith. Once one has spilt enough of their own blood in service of the Church, they are bestowed a weapon thrice-bathed in the sacred ichor of a Celestial.", sellRarity: "", type: "Greatsword" },
+      "Inquisitor's Straight Sword": { stats: { Scaling_WeaponHeavy: 8.3, EndLag: 0.1, SwingSpeed: 0.63, Weight: 9, Length: 9, Damage: 23.5 }, description: "...", sellRarity: "", type: "Greatsword" },
+      "Inquisitors Thorn": { stats: { Length: 8, Penetration: 10, SwingSpeed: 0.81, Scaling_WeaponLight: 7, Weight: 4, Damage: 14 }, description: "Deceivingly swift, this blade was once used to pierce through the carapaces of the indomitable Crastaceous Rex by members of the ill-fated Authority 'Expeditionary Corps'.", sellRarity: "", type: "Rapier" },
+      "Iron Birch": { stats: { Scaling_WeaponHeavy: 6, SwingSpeed: 0.64, Length: 8, Weight: 4, Damage: 26.5 }, description: "The smiths of the Hive will often decorate their weaponry with the unique flora of their homes. Some of the world's best existing botanical records are found on the heads of axes.", sellRarity: "", type: "Greataxe" },
+      "Iron Blunderbuss": { stats: { EndLag: 0.08, Reload: 0.65, Scaling_WeaponMedium: 7, Penetration: 25, SwingSpeed: 0.73, Weight: 5, Shots: 1, Length: 8, Damage: 18 }, description: "A modification upon Gunsmith Rosen's designs produced by Gunsmith Hierka, the former prot\u00e9g\u00e9 of Rosen. It's said that Hierka hid his origins as a member of the Authority's Bureau of Research in order to steal the Summer Company's secrets.", sellRarity: "", type: "Rifle" },
+      "Iron Cestus": { stats: { Weight: 5, Penetration: 5, SwingSpeed: 0.87, Scaling_WeaponLight: 7, Length: 6, Damage: 13.5 }, description: "Cestus used by members of the Hundred Legions.", sellRarity: "", type: "Fist" },
+      "Iron Spear": { stats: { Penetration: 10, Scaling_WeaponMedium: 2.5, SwingSpeed: 0.76, Length: 9, Weight: 5, Damage: 17 }, description: "A spear perfect for poking at a safe distance.", sellRarity: "", type: "Spear" },
+      "Iron Twinblade": { stats: { Chip: 30, Scaling_WeaponMedium: 4, SwingSpeed: 0.75, Length: 8, Weight: 4, Damage: 15 }, description: "A modest twinblade, inspired by the whirling Etrean blades of ancient times. Though some dismiss it as unwieldy and impractical, those who choose to wield this weapon seek something far greater than mere convenience. Their focus is not on ease of use, but on the artistry, power, and relentless momentum that only a blade like this can unleash.", sellRarity: "", type: "Twinblade" },
+      "Irontusk": { spec: 1, stats: { Penetration: 10, Scaling_WeaponMedium: 3, SwingSpeed: 0.67, Length: 9, Weight: 5, Damage: 16.5 }, description: "A spear passed down by your ancestors.", sellRarity: "", type: "Spear" },
+      "Jus Karita": { stats: { Weight: 3, Penetration: 20, EndLag: 0.05, SwingSpeed: 0.88, Scaling_WeaponLight: 9, Length: 6.5, Damage: 14 }, description: "The traditional martial arts style of the Justicars.", sellRarity: "", type: "Fist" },
+      "Kanabo": { stats: { Scaling_WeaponHeavy: 6, Scaling_Strength: 3, EndLag: 0.1, SwingSpeed: 0.65, Weight: 9, Length: 9, Damage: 25 }, description: "Once a staple weapon in Etreas arsenal, renowned for its scale and brute force, it was wielded by the heavy infantry of the Kings Guard. These ironclad warriors used kanabos to enforce the Kings will and maintain order across the Etrean Luminant. Today, its use has become significantly less common, with Etrea favouring the development of its blades instead.", sellRarity: "", type: "Greathammer" },
+      "Katana": { stats: { Length: 8, Scaling_WeaponMedium: 6, SwingSpeed: 0.75, Weight: 5, SwingSpeedMod: 0.08, Damage: 18 }, description: "An exquisite blade of Etrean make, it's said to have put the early Kingdom of Etrea's name on the map.", sellRarity: "", type: "Sword" },
+      "Khan Shield": { stats: { Scaling_Offhand: 0, Weight: 8 }, description: "The shields of Legion shieldbearers are often decorated with the visages of famous warriors they admire.", sellRarity: "", type: "Shield" },
+      "Kindred Edict": { stats: { Scaling_Body: 2.5, Scaling_WeaponMedium: 5, SwingSpeed: 0.78, Penetration: 10, Length: 7.5, Weight: 4.5, Damage: 17 }, description: "A blade forged from pale metal recovered from Celestial crash-sites by Starkindred artisans. Nearly weightless, this type of blade is a staple in the West amongst adherents of the faith. Once one has spilt enough of their own blood in service of the Church, they are bestowed a weapon thrice-bathed in the sacred ichor of a Celestial.", sellRarity: "", type: "Sword" },
+      "Kite Shield": { stats: { Scaling_Offhand: 0, Weight: 4.5 }, description: "A fine shield to hold back the horrors of the world.", sellRarity: "", type: "Shield" },
+      "Krulian Knife": { stats: { Length: 6, SwingSpeed: 0.86, Weight: 4, Scaling_WeaponLight: 10.5, Penetration: 20, Damage: 12.5 }, description: "An exceptionally sharp knife forged by unknown means. Carries an aura of intense foreboding.", sellRarity: "Mythic", type: "Dagger" },
+      "Kyrsblade": { stats: { Scaling_WeaponMedium: 6, Chip: 30, Penetration: 5, Weight: 6, Length: 7.5, SwingSpeedMod: 0.08, SwingSpeed: 0.75, Damage: 22 }, description: "...", sellRarity: "", type: "Sword" },
+      "Kyrscleave": { stats: { EndLag: 0.1, Chip: 15, Bleed: 0.8, Weight: 9, Scaling_WeaponHeavy: 9, Length: 9, SwingSpeed: 0.65, Damage: 24 }, description: "...", sellRarity: "Mythic", type: "Greatsword" },
+      "Kyrsedge": { stats: { Length: 6, Chip: 15, SwingSpeed: 0.98, Weight: 4, Scaling_WeaponLight: 8.5, Penetration: 30, Damage: 13 }, description: "...", sellRarity: "Mythic", type: "Dagger" },
+      "Kyrsglaive": { stats: { Scaling_WeaponMedium: 5, Penetration: 20, Bleed: 0.85, SwingSpeed: 0.72, Length: 9, Weight: 5, Damage: 19 }, description: "A spear perfect for poking at a safe distance.", sellRarity: "", type: "Spear" },
+      "Kyrsieger": { stats: { Chip: 0.1, Scaling_WeaponHeavy: 7, Scaling_Charisma: 2, Weight: 9, Penetration: 15, Length: 9, SwingSpeed: 0.63, Damage: 24 }, description: "The fall of Constellia was first heralded by a devastating barrage of a hundred Kyrsiegers piercing through its crystalline arches. Perhaps the most renowned member of the Kyrsan arsenal, the blades explosive power can only be invoked through solemn prayer to Ethiron. The words of this prayer worm their way into the minds of its bearer willing or not.", sellRarity: "Mythic", type: "Greatsword" },
+      "Kyrstear": { stats: { Scaling_Offhand: 0, EndLag: 0.1, Weight: 3, Length: 6.5, SwingSpeed: 1 }, description: "Your reliable offhand.", sellRarity: "", type: "Parry Dagger" },
+      "Kyrstreza": { stats: { Length: 8, Penetration: 30, SwingSpeed: 0.82, Scaling_WeaponLight: 8.5, Weight: 4, Damage: 15 }, description: "...", sellRarity: "", type: "Rapier" },
+      "Kyrswynter": { stats: { Scaling_WeaponMedium: 5, Chip: 0.05, Scaling_ElementIce: 3, Bleed: 1, Weight: 6, Penetration: 20, Length: 9, SwingSpeed: 0.72, Damage: 16 }, description: "Forged in an age lost to history and salvaged from the Eternal Gale, this relic hails from a forgotten era. As the last whispered remnant of its kind, it comes from a time before the people of New Kyrsa fell under the command of the Drowned God Ethiron. The spear is extremely cold to the touch, with an unsettling chill that clings to your skin, leaving a lingering numbness. It embodies the delicate and refined artistry of the Kyrsgarde, showcasing their elegance and sophistication prior to their corruption. Though the Kyrsgarde still wield spears of frost, the craftsmanship of their modern weaponry pales in comparison, having become crude and uninspired under Ethirons thrall.", sellRarity: "Mythic", type: "Spear" },
+      "Legion Cestus": { stats: { Weight: 5, Penetration: 5, EndLag: 0.05, SwingSpeed: 0.86, Scaling_WeaponLight: 9, Length: 6, Damage: 15 }, description: "Cestus used by members of the Hundred Legions.", sellRarity: "", type: "Fist" },
+      "Legion Kata": { stats: { Weight: 3, Penetration: 20, EndLag: 0.05, SwingSpeed: 0.88, Scaling_WeaponLight: 9, Length: 7, Damage: 14 }, description: "The traditional martial arts style of the Authority.", sellRarity: "", type: "Fist" },
+      "Light's Final Toll": { stats: { Weight: 5, Scaling_Willpower: 11, Penetration: 10, SwingSpeed: 0.85, Scaling_WeaponLight: 4, Length: 7, Damage: 12 }, description: "A reminder that all songs must come to an end.", sellRarity: "", type: "Fist" },
+      "Long Shattered Katana": { spec: 1, stats: { Length: 20, Penetration: 25, Scaling_WeaponMedium: 7, SwingSpeed: 0.75, Weight: 5, SwingSpeedMod: 0.08, Damage: 25 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "Mace": { stats: { Penetration: 10, Scaling_WeaponMedium: 7, SwingSpeed: 0.73, Length: 8, Weight: 5, Damage: 17 }, description: "A simple blunt weapon effective at breaking guards.", sellRarity: "Rare", type: "Club" },
+      "Markor's Inheritor": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.1, SwingSpeed: 0.65, Weight: 8, Length: 8.5, Damage: 24 }, description: "The Scholars of Markor, said to catalog the world itself, travel from land to land collecting information by force of their blades. Mastering the styles of combat from various stretches of the sea, they practice their art through the blade itself.", sellRarity: "", type: "Greatsword" },
+      "Master Hawk's Handaxe": { stats: { EndLag: 0.4, Chip: 25, Scaling_WeaponHeavy: 10, Weight: 10, SwingSpeed: 0.62, Length: 8.5, Penetration: 5, Damage: 24 }, description: "...", sellRarity: "", type: "Greataxe" },
+      "Megaphone": { spec: 1, stats: { Weight: 8, SwingSpeed: 0.85, Scaling_WeaponLight: 10, Length: 7, Damage: 20 }, description: "sured speak", sellRarity: "Mythic", type: "Fist" },
+      "Messer": { stats: { Scaling_WeaponMedium: 5, SwingSpeed: 0.73, Length: 7.5, Weight: 6, Damage: 20 }, description: "Considered by many to be an overgrown kitchen knife, the Messer is a favorite of rangers and beast hunters the world alike.", sellRarity: "Common", type: "Sword" },
+      "Morning Star": { stats: { Scaling_WeaponMedium: 6, Chip: 0.2, Bleed: 0.1, Weight: 5, Penetration: 20, Length: 7.5, SwingSpeed: 0.74, Damage: 16 }, description: "", sellRarity: "", type: "Club" },
+      "Mortal Blade": { spec: 1, stats: { Penetration: 30, Scaling_WeaponMedium: 7, Weight: 4, SwingSpeed: 0.8, Length: 8.5, Damage: 25 }, description: "", sellRarity: "Legendary", type: "Sword" },
+      "Mudskipper": { spec: 1, stats: { Weight: 3, Penetration: 5, SwingSpeed: 0.9, Scaling_WeaponLight: 9, Length: 5, Damage: 14.5 }, description: "The style of the drowned ones.", sellRarity: "", type: "Fist" },
+      "Needle's Eye": { stats: { Penetration: 15, SwingSpeed: 0.82, Scaling_WeaponLight: 8.5, Length: 8, Weight: 5, Damage: 16.5 }, description: "Not much is known about these rapiers other than the fact that they're a reproduction of Duchess Thera Erisia's rapier, which she is said to have died with in a dispute while being vastly outnumbered, the tale goes that she actually made it through the onslaught but died from blood loss in the arms of her noble son Nir, who took her mantle shortly after.", sellRarity: "", type: "Rapier" },
+      "Nemit's Sickle": { stats: { Length: 6, SwingSpeed: 0.98, Weight: 4, Scaling_WeaponLight: 13, Penetration: 30, Damage: 11 }, description: "...", sellRarity: "Rare", type: "Dagger" },
+      "Night Axe": { stats: { Scaling_WeaponHeavy: 8, Penetration: 5, Chip: 80, SwingSpeed: 0.62, Length: 8.5, Weight: 10, Damage: 22 }, description: "The Night Axe, a weapon of little contemporary renown, was forged by the ancient folk of Minityrsa and wielded by Ekrim of the Rouhlx Dyad, who came to be known as the Third\u2019s Eclipse. Paired with its luminous counterpart, Daycleave, the Night Axe cast long shadows of fear across the old settlements. Its history is whispered in tales of unstoppable might and the haunting interplay of night and day. Shaky accounts speak of the pair meeting a grim fate at the hands of a power they once worshipped, sealing their legend in shade.", sellRarity: "", type: "Greataxe" },
+      "Officer Saber": { stats: { Scaling_WeaponMedium: 4.5, SwingSpeed: 0.75, Length: 8, Weight: 6, Damage: 22 }, description: "The characteristic saber of an Authority Officer. Typically used in Authority raids on disputed territories.", sellRarity: "Common", type: "Sword" },
+      "Old World Greatshield": { stats: { Scaling_Offhand: 0, Weight: 5 }, description: "A shield designed intricately, most likely from a pre-Canticlysm era. Its intricate design suggests previous use in royalty, although it cannot be said for sure.", sellRarity: "", type: "Shield" },
+      "Pale Briar": { stats: { EndLag: 0, Chip: 10, Scaling_WeaponHeavy: 7.5, Weight: 7, Penetration: 25, Length: 10, SwingSpeed: 0.65, Damage: 23 }, description: "Staff of a Cardinal of the Starkindred Church, said to be coated in Celestial Ichor to grant it the investment of the Stars. This particular iteration fell into the hands of the Maestro during his training with the Legions in an excursion against the Starkindred Church.", sellRarity: "Mythic", type: "Greataxe" },
+      "Pale Morning": { stats: { Scaling_WeaponHeavy: 9, Penetration: 20, EndLag: 0.1, SwingSpeed: 0.83, Weight: 10, Length: 9, Damage: 24 }, description: "A hammer of exceptionally fine make, a replica of a famous hammer wielded by a Canor warlord during the First Century of the New World.", sellRarity: "", type: "Greathammer" },
+      "Parrying Dagger": { stats: { Scaling_Offhand: 0, EndLag: 0.1, Weight: 1, Length: 8, SwingSpeed: 1.05 }, description: "A dagger that is used more as a pivot for parrying than as a weapon of its own right.", sellRarity: "", type: "Parry Dagger" },
+      "Pernach": { stats: { Scaling_WeaponMedium: 6, Chip: 5, Bleed: 0.2, Weight: 7, Penetration: 30, Length: 8, SwingSpeed: 0.74, Damage: 19 }, description: "", sellRarity: "", type: "Club" },
+      "Petras Anchor": { stats: { Scaling_WeaponHeavy: 8, Penetration: 15, EndLag: 0.45, SwingSpeed: 0.65, Weight: 9, Length: 9, Damage: 26 }, description: "A anchor from a frigid beast, only those with true power wield it.", sellRarity: "", type: "Greathammer" },
+      "Pleeksty's Inferno": { stats: { Scaling_WeaponMedium: 3, Chip: 10, Scaling_ElementFire: 4, Weight: 8, Penetration: 30, Length: 8, SwingSpeed: 0.7, Damage: 22 }, description: "In the Tiran homelands, weapons are often fashioned using knapped volcanic glass like obsidian. Though brittle, the prismatic blades embedded in the sides are sharper than any blade of metalwork. Following the ascent of Amorus Pleeksty and his pioneering of Flamecharm, many Tirans worked floral patterns into their Macuahuitls in reverence of the Deepwoken. Of these Macuahuitls, this particular specimen was a gift to Pleeksty himself, imbued with the eruptive and scorching heat of magma, and fit only to be wielded by those who truly walk in his footsteps.", sellRarity: "Mythic", type: "Club" },
+      "Prestige Candy Cane": { spec: 1, stats: { Length: 9.5, SwingSpeed: 0.8, Scaling_WeaponLight: 7.5, Weight: 4, Damage: 18.5 }, description: "...", sellRarity: "", type: "Rapier" },
+      "Purple Cloud": { stats: { Penetration: 15, Scaling_WeaponMedium: 9, SwingSpeed: 0.8, Weight: 5, Length: 7, Damage: 16.5 }, description: "The traditional martial arts style of the Justicars.", sellRarity: "", type: "Fist" },
+      "Putrid Edenstaff": { halloween: 1, stats: { Scaling_WeaponHeavy: 8.5, Penetration: 15, EndLag: 0.1, SwingSpeed: 0.87, Weight: 9, Length: 9, Damage: 25 }, description: "", sellRarity: "Legendary", type: "Greathammer" },
+      "Quartztone Pickaxe": { stats: { Scaling_WeaponHeavy: 7, SwingSpeed: 0.62, Penetration: 20, Length: 8, Weight: 7, Damage: 22 }, description: "A pickaxe fashioned from an exceptionally large node of quartz. The crystal has been painstakingly tuned to the frequency of a Mantra, conjuring its effects on use.", sellRarity: "Legendary", type: "Greataxe" },
+      "Quickfang": { stats: { Length: 8, Penetration: 5, SwingSpeed: 0.81, Scaling_WeaponLight: 7, Weight: 4, Damage: 12 }, description: "A rapier passed down by your ancestors.", sellRarity: "", type: "Rapier" },
+      "Railblade": { stats: { Scaling_WeaponHeavy: 8.3, Penetration: 25, SwingSpeed: 0.68, Length: 8.5, Weight: 8, Damage: 22 }, description: "A now legendary blade devised by the Ignition Union to exterminate the terrifying foes lurking deeper within the Depths. Said to constantly generate a warding heat that protects the wearer against the insidious chill of the Eternal Gale.", sellRarity: "Mythic", type: "Greatsword" },
+      "Razor Cutlass": { stats: { Scaling_WeaponMedium: 8, Penetration: 25, Bleed: 0.6, SwingSpeed: 0.8, Length: 8, Weight: 7, Damage: 18 }, description: "A serrated cutlass fashioned after the famously brutal bite of a Lionfish.", sellRarity: "", type: "Sword" },
+      "Relic Axe": { stats: { EndLag: 0.4, Chip: 10, Scaling_WeaponHeavy: 9, Weight: 6, Penetration: 25, Length: 8.5, SwingSpeed: 0.62, Damage: 25 }, description: "...", sellRarity: "", type: "Greataxe" },
+      "Repeater": { stats: { Weight: 3, SwingSpeed: 0.6, Scaling_WeaponLight: 15, Length: 12, Damage: 14 }, description: "The mechanisms of this firearm are more of a meticulous make then their mass-produced cousins, and are often found as collector's items above the mastlepieces of the wealthy.", sellRarity: "", type: "Gun" },
+      "Rifle Spear": { stats: { Scaling_WeaponMedium: 7, Reload: 0.65, Penetration: 25, SwingSpeed: 0.68, Weight: 5, Shots: 1, Length: 9, Damage: 21 }, description: "A modification upon Gunsmith Rosen's designs produced by Gunsmith Hierka, the former prot\u00e9g\u00e9 of Rosen. It's said that Hierka hid his origins as a member of the Authority's Bureau of Research in order to steal the Summer Company's secrets.", sellRarity: "", type: "Spear" },
+      "Ritual Spear": { stats: { Penetration: 25, Scaling_WeaponMedium: 5, SwingSpeed: 0.68, Length: 9, Weight: 5, Damage: 19 }, description: "A spear used by a sacred tribe", sellRarity: "", type: "Spear" },
+      "Rosen's Peacemaker": { stats: { SwingSpeed: 0.75, Scaling_WeaponMedium: 7.5, Weight: 3, Length: 7, Shots: 1, Damage: 18, Reload: 0.65 }, description: "A modification upon Gunsmith Rosen's designs produced by Gunsmith Hierka, the former prot\u00e9g\u00e9 of Rosen. It's said that Hierka hid his origins as a member of the Authority's Bureau of Research in order to steal the Summer Company's secrets.", sellRarity: "", type: "Rifle" },
+      "Sacred Hammer": { stats: { Penetration: 10, Scaling_WeaponMedium: 7, SwingSpeed: 0.73, Length: 7, Weight: 5, Damage: 19.5 }, description: "...", sellRarity: "Rare", type: "Club" },
+      "Scalesplitter": { stats: { Penetration: 10, Scaling_WeaponMedium: 5, SwingSpeed: 0.74, Length: 8, Weight: 5, Damage: 17.5 }, description: "An ancient Etrean twinblade, recently rediscovered as a fragment of driftland surfaced, revealing the remnants of a long-lost Etrean platoon that had perished and been claimed by the void ages ago. Now, this weapon, once thought lost to time, has re-emerged into circulation, carrying with it echoes of forgotten battles.", sellRarity: "", type: "Twinblade" },
+      "Scimitar": { stats: { Scaling_WeaponMedium: 3, SwingSpeed: 0.715, Length: 8, Weight: 5, Damage: 15 }, description: "A curved blade that hails from the savannah of Markor. Though now assimilated into the Central Authority, the people of Markor still celebrate a rich culture.", sellRarity: "Common", type: "Sword" },
+      "Serenflude Dagger": { spec: 1, stats: { Length: 7.5, SwingSpeed: 0.98, Scaling_WeaponLight: 5, Weight: 4, Damage: 17.5 }, description: "A dagger of slight proportions, yields power with the Sanguine, drenched in blood.", sellRarity: "Mythic", type: "Dagger" },
+      "Serpent's Edge": { stats: { Penetration: 15, Scaling_WeaponMedium: 6, SwingSpeed: 0.75, Length: 8, Weight: 6, Damage: 22 }, description: "Despite popular opinion, the Serpent's Edge is actually a blade of Capra make, as opposed to one of Etrean make. It cuts just as well as any Etrean blade, however.", sellRarity: "", type: "Sword" },
+      "Serrated Warspear": { stats: { Scaling_WeaponMedium: 6.5, Penetration: 20, Bleed: 0.5, SwingSpeed: 0.7, Length: 9, Weight: 5, Damage: 18 }, description: "...", sellRarity: "Legendary", type: "Spear" },
+      "Shattered Katana": { stats: { Length: 8, Penetration: 30, Scaling_WeaponMedium: 7, SwingSpeed: 0.74, Weight: 5, SwingSpeedMod: 0.08, Damage: 20 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "Shotel": { spec: 1, stats: { Scaling_WeaponMedium: 2.5, SwingSpeed: 0.71, Length: 7.2, Weight: 5, Damage: 23 }, description: "A blade of fine craft, likely an heirloom of whoever held the blade before it was pilfered from their remains.", sellRarity: "Common", type: "Sword" },
+      "Skull Piercer": { halloween: 1, stats: { Length: 8.5, Penetration: 10, Bleed: 1.1, SwingSpeed: 0.81, Scaling_WeaponLight: 8, Weight: 4, Damage: 14 }, description: "Upon holding the blade, it feels as if the skulls adorning it are warm, somehow. What is this, truly?", sellRarity: "", type: "Rapier" },
+      "Skyreap Blade": { halloween: 1, stats: { Scaling_WeaponHeavy: 8, EndLag: 0.1, SwingSpeed: 0.55, Weight: 7, Length: 9, Damage: 23 }, description: "A weapon from the lightborn's keep", sellRarity: "", type: "Greataxe" },
+      "Soulsplitter": { spec: 1, stats: { Scaling_WeaponMedium: 700, Chip: 0.5, Penetration: 10, SwingSpeed: 0.75, SoulsplitCount: 0, Length: 10.5, Weight: 7, Damage: 20 }, description: "", sellRarity: "Legendary", type: "Spear" },
+      "Sovereign's Punishment": { stats: { EndLag: 0.15, Chip: 10, Scaling_WeaponHeavy: 9, Weight: 13, Penetration: 20, Length: 9, SwingSpeed: 0.65, Damage: 26 }, description: "A ceremonial hammer meant to represent the strength of Authority Law. Considered unwieldy and unsuitable for battle. Until you picked it up.", sellRarity: "Legendary", type: "Greathammer" },
+      "Spear of Longinus": { spec: 1, stats: { EndLag: 0.3, Chip: 75, Scaling_WeaponMedium: 7, Weight: 8, Penetration: 40, Length: 14, SwingSpeed: 0.67, Damage: 25 }, description: "An extraterrestrial artifact created by the First Ancestral Race with the power to penetrate any AT field and immobilize beings who possess god-like power.", sellRarity: "Legendary", type: "Spear" },
+      "Speed Shattered Katana": { spec: 1, stats: { Length: 14, Penetration: 25, Scaling_WeaponMedium: 7, SwingSpeed: 0.75, Weight: 5, SwingSpeedMod: 0.08, Damage: 20 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "spider test": { spec: 1, stats: { Weight: 1, SwingSpeed: 0.68, Scaling_WeaponLight: 12, Length: 10.5, Damage: 14 }, description: "With an almost flawless silver sheen that prevents corrosion from saltwater, the Dawnshot was purpose-built by Rosen for his lengthy travels at sea. Its short range is compensated for by the almost wrist-snapping kickback of four barrels. Although, with the Summer Company Cannon making most naval investments in their territories obsolete, this weapon has fallen out of production.", sellRarity: "", type: "Gun" },
+      "Steel Maul": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.1, SwingSpeed: 0.65, Weight: 7, Length: 9, Damage: 22 }, description: "A sturdy maul perfect for knocking walls and people down alike.", sellRarity: "", type: "Greathammer" },
+      "Stiletto": { stats: { Length: 6.5, EndLag: 0.05, SwingSpeed: 0.98, Scaling_WeaponLight: 3, Weight: 2, Damage: 11 }, description: "A remarkably thin blade often likened to (and used as) a toothpick.", sellRarity: "Common", type: "Dagger" },
+      "Stoneheart": { spec: 1, stats: { Scaling_WeaponHeavy: 7, EndLag: 0.45, SwingSpeed: 0.6, Weight: 10, Length: 9, Damage: 22 }, description: "A hammer pieced together from the remains of one of Duke Ishamon Erisia's Golems. Conjured by the Duke's Resonance, they once patrolled his estate in Celtor before its fall. From the reports of spies hired by rival nobles in the city, he was only able to support a limited number of golems - his acquisition of the Forge of Sin seems to have extended his capacity by other, more sinister means.", sellRarity: "", type: "Greathammer" },
+      "Stormseye": { stats: { EndLag: 0.08, Reload: 0.65, Scaling_ElementLightning: 6, Scaling_WeaponMedium: 3, Penetration: 25, SwingSpeed: 0.75, Weight: 5, Shots: 1, Length: 8, Damage: 19.5 }, description: "Pilfered from Union shipments, the Summer Company saw the tremendous energy stored within Kyrsan Medallions and fashioned this uniquely violent prototype. Rosen allegedly burst into raucous laughter when presented with the draft, immediately giving his approval.", sellRarity: "", type: "Rifle" },
+      "Summer Rifle": { stats: { Weight: 4, Scaling_WeaponMedium: 6, SwingSpeed: 0.73, Length: 8, Shots: 1, Damage: 17, Reload: 0.65 }, description: "A standard issue firearm produced by the Summer Company. A reliable firearm, though somewhat less elegant than their more expensive models.", sellRarity: "", type: "Rifle" },
+      "Sword": { stats: { Scaling_WeaponMedium: 2.5, SwingSpeed: 0.75, Length: 8, Weight: 5, Damage: 18 }, description: "A blade of fine craft, likely an heirloom of whoever held the blade before it was pilfered from their remains.", sellRarity: "Common", type: "Sword" },
+      "Swordfish Rapier": { stats: { Length: 8, SwingSpeed: 0.8, Scaling_WeaponLight: 6.5, Weight: 4, Damage: 16.5 }, description: "Taste like fish.", sellRarity: "", type: "Rapier" },
+      "Tanto": { stats: { SwingSpeed: 0.98, Weight: 3, Scaling_WeaponLight: 8, Length: 6.5, Damage: 15.5 }, description: "A dagger forged by a Etrean smith, the Tanto is said to bear the same durability as the Katana, but in a smaller profile.", sellRarity: "Mythic", type: "Dagger" },
+      "Targe": { stats: { Scaling_Offhand: 0, Weight: 4 }, description: "A round, wooden shield often accompanied by spear or short blade.", sellRarity: "", type: "Shield" },
+      "Test Skipper": { spec: 1, stats: { Weight: 3, Penetration: 20, SwingSpeed: 0.9, Scaling_WeaponLight: 9, Length: 7, Damage: 14.5 }, description: "The style of the drowned ones.", sellRarity: "", type: "Fist" },
+      "Test Sword": { spec: 1, stats: { Scaling_WeaponMedium: 2.5, SwingSpeed: 0.75, Length: 8, Weight: 5, Damage: 18 }, description: "A blade of fine craft, likely an heirloom of whoever held the blade before it was pilfered from their remains.", sellRarity: "Common", type: "Sword" },
+      "The Barrel": { spec: 1, stats: { Scaling_WeaponHeavy: 8.5, Weight: 9.5, Chip: 0.15, SwingSpeed: 0.82, Length: 8, Penetration: 5, Damage: 25.5 }, description: "Once mounted on a royal Etrean galleon, this bulky cannon was salvaged from a wreck by the Summer Company and adapted into a handheld design; still cumbersome, according to those who used it before its eventual retirement.", sellRarity: "", type: "Greatcannon" },
+      "The Colremis Saber": { spec: 1, stats: { Chip: 5, Scaling_WeaponMedium: 6, SwingSpeed: 0.74, Length: 8, Weight: 7, Damage: 18 }, description: "Forged from fractured kyber and ancient alloy, Colremis hums with a deep, resonant tone \u2014 as if mourning forgotten wars. Its blade burns with a muted, smoky hue, pulsing like the last heartbeat of a fallen star. Said to awaken only in the hands of one who has faced true loss, Colremis is not merely a weapon, but a memory made manifest.", sellRarity: "", type: "Sword" },
+      "The Flippers of Fate": { stats: { Scaling_WeaponLight: 1.5, Scaling_Intelligence: 3, Scaling_Charisma: 3, Weight: 3.5, Penetration: 15, Length: 6.5, SwingSpeed: 0.7, Damage: 14.5 }, description: "That isn't smoke. It's steam.", sellRarity: "", type: "Dagger" },
+      "The Long Tong of The Law": { stats: { Chip: 40, Scaling_Charisma: 1.15, Scaling_Intelligence: 1.1, Bleed: 0.4, Weight: 8, Scaling_WeaponHeavy: 8.5, Length: 10, SwingSpeed: 0.55, Damage: 20 }, description: "Where's the crabbo SAUUUCE?", sellRarity: "", type: "Greatsword" },
+      "The Moonblades": { spec: 1, stats: { EndLag: 0.05, Scaling_WeaponLight: 8, Scaling_Intelligence: 2, Weight: 4, Penetration: 30, Length: 6, SwingSpeed: 0.7, Damage: 13 }, description: "Legendary staff of a Legion Praetorian of ages past. In his hands its said to have wiped whole towns off the face of the map with one swing, and to have rapidly expanded the outer reaches of their territory. The veracity of these claims is of some dispute, but the peculiar properties of the weapon do lend some credence to its reputation.", sellRarity: "Mythic", type: "Dagger" },
+      "The Pastry Paster": { stats: { Scaling_Charisma: 2, Scaling_Intelligence: 2, Scaling_WeaponMedium: 5, SwingSpeed: 0.75, Length: 7.5, Weight: 7, Damage: 15.5 }, description: "Anyone can cook, but only the fearless can be great.", sellRarity: "", type: "Club" },
+      "The Path's Defender": { stats: { Scaling_Offhand: 0, Weight: 10 }, description: "A venerated shield, donned only by those who have walked their own Path as they see fit.", sellRarity: "", type: "Shield" },
+      "Toothed Club": { stats: { Scaling_WeaponMedium: 5, Chip: 0.05, Bleed: 0.15, Weight: 6, Penetration: 10, Length: 7.5, SwingSpeed: 0.73, Damage: 16 }, description: "", sellRarity: "", type: "Club" },
+      "Trident Spear": { stats: { Scaling_WeaponMedium: 6, Penetration: 25, EndLag: 0.6, SwingSpeed: 0.705, Length: 9, Weight: 5, Damage: 19 }, description: "A spear perfect for poking at a safe distance.", sellRarity: "", type: "Spear" },
+      "True Chorus of Agonies": { spec: 1, stats: { Scaling_WeaponHeavy: 11, Chip: 50, SwingSpeed: 0.62, Length: 14.5, Weight: 15, Damage: 26 }, description: "Towering over the trial like a monument, Enmity's presence draws the very air from your lungs, oppressive and unyielding, as if it too was full of scorn. Now in your grasp, the vile axe pulses with a dreadful rhythm, a heartbeat woven from the anguish of innumerable tortured souls. The air thickens under its weight, every inch of the weapon's twisted form resenting its own existence. The damned enforcers within wail for release, their mournful song clawing at your spirit. Yet, stood firm, you meet the abyss with defiance. The Chorus of Agonies envelops you.", sellRarity: "", type: "Greataxe" },
+      "True Crypt Blade": { spec: 1, stats: { Scaling_WeaponHeavy: 4, Scaling_ElementShadow: 9, SwingSpeed: 0.725, Weight: 9, Length: 12, Damage: 22 }, description: "A blade said to have been forged from the remains of the Last Dead, the last fortunate souls at the end of the Canticlysm to be spared the Drowning.", sellRarity: "Mythic", type: "Greatsword" },
+      "True Guiding Star": { spec: 1, stats: { Scaling_Mind: 3, Scaling_WeaponMedium: 10, SwingSpeed: 1, Length: 15, Weight: 5, Damage: 14 }, description: "A bow of sacred reverence for the Children of Navae, the Guiding Star is wielded during the Festival of Lights by aspirants who seek to prove themselves in its trials. During these trials, competitors must hunt a wolf blindfolded, using only their other senses to track and remain hidden. Should the wolf sink its fangs into the competitor, or leave any mark upon them, they are disqualified. The bow itself is also somewhat of a curiosity, as its arrows are conjured from the Ether of its wielder and guided by their own will. Many of the previous winners of the trials speak of the Guiding Star speaking to them in a soothing voice, pushing them in the right direction.", sellRarity: "", type: "Bow" },
+      "True Hero's Blade of Shadow": { spec: 1, stats: { Scaling_ElementShadow: 9, Penetration: 10, Weight: 5, SwingSpeed: 0.75, Length: 13, SwingSpeedMod: 0.08, Damage: 20 }, description: "A blade said to be enruned with a passage of the song, it evokes the merciless void of the darkest shadows.", sellRarity: "", type: "Sword" },
+      "True Imperator's Edge": { spec: 1, stats: { Scaling_WeaponMedium: 2, Scaling_Fortitude: 4, Scaling_Strength: 3, Weight: 7, Penetration: 20, Length: 14, SwingSpeed: 0.75, Damage: 20 }, description: "A gargantuan greatspear, its tip infused with the very essence of light, shines like a beacon of unyielding strength and fortitude. Carried at the forefront of the Hundred Legions, it illuminates their path with a blinding brilliance, a symbol of resilience that pierces the shadows and leads them to inevitable victory.", sellRarity: "Mythic", type: "Spear" },
+      "True Imperial Staff": { spec: 1, stats: { Scaling_Strength: 3, SwingSpeed: 0.7, Scaling_WeaponMedium: 5, Penetration: 40, Weight: 6, Length: 11, Damage: 19.5 }, description: "Legendary staff of a Legion Praetorian of ages past. In his hands its said to have wiped whole towns off the face of the map with one swing, and to have rapidly expanded the outer reaches of their territory. The veracity of these claims is of some dispute, but the peculiar properties of the weapon do lend some credence to its reputation.", sellRarity: "Mythic", type: "Spear" },
+      "True Kindred Edict": { spec: 1, stats: { Scaling_Body: 2.5, Scaling_WeaponMedium: 5, SwingSpeed: 0.78, Penetration: 10, Length: 12, Weight: 4.5, Damage: 17 }, description: "A blade forged from pale metal recovered from Celestial crash-sites by Starkindred artisans. Nearly weightless, this type of blade is a staple in the West amongst adherents of the faith. Once one has spilt enough of their own blood in service of the Church, they are bestowed a weapon thrice-bathed in the sacred ichor of a Celestial.", sellRarity: "", type: "Sword" },
+      "True Kyrswynter": { spec: 1, stats: { Scaling_WeaponMedium: 5, Chip: 0.05, Scaling_ElementIce: 3, Bleed: 1, Weight: 6, Penetration: 20, Length: 12, SwingSpeed: 0.72, Damage: 16 }, description: "Forged in an age lost to history and salvaged from the Eternal Gale, this relic hails from a forgotten era. As the last whispered remnant of its kind, it comes from a time before the people of New Kyrsa fell under the command of the Drowned God Ethiron. The spear is extremely cold to the touch, with an unsettling chill that clings to your skin, leaving a lingering numbness. It embodies the delicate and refined artistry of the Kyrsgarde, showcasing their elegance and sophistication prior to their corruption. Though the Kyrsgarde still wield spears of frost, the craftsmanship of their modern weaponry pales in comparison, having become crude and uninspired under Ethirons thrall.", sellRarity: "Mythic", type: "Spear" },
+      "True Legion Kata": { spec: 1, stats: { Weight: 3, Penetration: 20, EndLag: 0.05, SwingSpeed: 0.88, Scaling_WeaponLight: 9, Length: 7, Damage: 14 }, description: "The traditional martial arts style of the Authority.", sellRarity: "", type: "Fist" },
+      "True Repeater": { spec: 1, stats: { Weight: 3, SwingSpeed: 0.63, Scaling_WeaponLight: 15, Length: 15, Damage: 14 }, description: "The mechanisms of this firearm are more of a meticulous make then their mass-produced cousins, and are often found as collector's items above the mastlepieces of the wealthy.", sellRarity: "", type: "Gun" },
+      "True Seraph Spear": { spec: 1, stats: { EndLag: 0.6, Chip: 40, Scaling_WeaponMedium: 7, Weight: 5, Penetration: 20, Length: 9, SwingSpeed: 0.72, Damage: 18.5 }, description: "...", sellRarity: "Legendary", type: "Spear" },
+      "True Shattered Katana": { spec: 1, stats: { Length: 13, Penetration: 30, Scaling_WeaponMedium: 7, SwingSpeed: 0.74, Weight: 5, SwingSpeedMod: 0.08, Damage: 20 }, description: "Fashioned after the legendary blade said to be wielded by the King of Etrea, the Splinterblade. An exceptionally lethal blade that makes short work of heavy armor.", sellRarity: "", type: "Sword" },
+      "True Warden Ceremonial Sword": { spec: 1, stats: { Scaling_WeaponMedium: 8.5, SwingSpeed: 0.8, EndLag: -0.2, Weight: 4, Length: 13, SwingSpeedMod: 0.195, Damage: 17 }, description: "", sellRarity: "Rare", type: "Sword" },
+      "True Wretched Mawblades": {spec: 1,  stats: { Scaling_WeaponHeavy: 8, SwingSpeed: 0.615, Weight: 8, Length: 9, Damage: 27.5 }, description: "Born from a twisted experiment by the enigmatic lightborn smiths of the floating keep, the Mawblades are a testament to unspeakable treachery. Stripped of mortality and violently reshaped, the tortured souls within these blades endure a fate crueler than death, their teeth aching eternally as they are bound to the insatiable hunger for destruction.", sellRarity: "", type: "Greatsword" },
+      "Tunafish Greathammer": { spec: 1, stats: { Scaling_WeaponHeavy: 7, EndLag: 0.45, SwingSpeed: 0.6, Weight: 10, Length: 9, Damage: 23.6 }, description: "Smells like fish.", sellRarity: "", type: "Greathammer" },
+      "Umbrite Witherblade": { stats: { Scaling_WeaponMedium: 12, Bleed: 0.3, Chip: 0.2, Weight: 5, Length: 8, SwingSpeed: 0.74, Damage: 13 }, description: "Once a derelict frame, now restored by your offerings, pulsing quicker and quicker... Its fibers twist and crack, reaching out to consume the cutlass, its shape warping into a rough mirage of the weapon. Infused with minerals it once knew, channeling the warped umbrite through its slick inky veins. Each strike drains the very soul of your foes, leaving them withered and undone.", sellRarity: "", type: "Sword" },
+      "Vigil Longsword": { stats: { Length: 8, Scaling_WeaponMedium: 6, SwingSpeed: 0.75, Weight: 5, SwingSpeedMod: 0.08, Damage: 20 }, description: "Despite the popularity of the Katana, the Vigil Longsword represents Etrea's need for more cost-efficient production processes in blades. Regarded as an equally fine blade, nonetheless.", sellRarity: "", type: "Sword" },
+      "Void Echo": { spec: 1, stats: { Weight: 5, Penetration: 5, SwingSpeed: 0.87, Scaling_WeaponLight: 13, Length: 6, Damage: 18.5 }, description: "Tournament Reward", sellRarity: "", type: "Fist" },
+      "Vortex Echo": { spec: 1, stats: { Weight: 4, Scaling_Charisma: 3.5, SwingSpeed: 0.77, Scaling_WeaponLight: 8, Length: 6, Damage: 13.5 }, description: "A small, pulsating vortex of Ethironal gale churns endlessly within this timepiece, driving its resonant ticks in eternal rhythm. Its ornate ivory white frame radiates an unnatural chill, as though the air surrounding it twists under the weight of some otherworldly force. Reaching in to grasp the ethereal chain, a sudden rush courses through you, a sensation like no other, being wrenched through the fabric of time itself. In those fleeting moments, you feel yourself grow just a little older.", sellRarity: "", type: "Fist" },
+      "Warden Ceremonial Sword": { stats: { SwingSpeed: 0.8, Scaling_WeaponMedium: 8.5, Weight: 4, Length: 7.5, SwingSpeedMod: 0.195, Damage: 17 }, description: "", sellRarity: "Rare", type: "Sword" },
+      "Warmonger": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.1, SwingSpeed: 0.6, Weight: 7, Length: 9, Damage: 22 }, description: "Warmonger hate. Warmonger destroy. Warmonger kill.", sellRarity: "", type: "Greathammer" },
+      "Way of Navae": { stats: { Weight: 3, SwingSpeed: 0.85, Scaling_WeaponLight: 7, Length: 7, Damage: 12 }, description: "...", sellRarity: "", type: "Fist" },
+      "Whaling Knife": { stats: { Length: 6, SwingSpeed: 0.98, Scaling_WeaponLight: 5, Weight: 4, Damage: 15 }, description: "The Knife of one of the infamous Silver Whalers, mercenaries and assassins feared and reviled the world over", sellRarity: "Mythic", type: "Dagger" },
+      "Widow's Miquelet": { halloween: 1, stats: { Scaling_Willpower: 3.5, Weight: 1, SwingSpeed: 0.68, Scaling_WeaponLight: 8, Length: 7.5, Damage: 14 }, description: "A slick designed hand gun powered by spectral energy, has remains of a Widow.", sellRarity: "", type: "Gun" },
+      "Worldpiercer Gauntlets": { stats: { Penetration: 15, SwingSpeed: 0.86, Scaling_WeaponLight: 8, Length: 6, Weight: 6, Damage: 18 }, description: "Brutal gauntlets wielded by those who break through defenses with unforgiving force.", sellRarity: "", type: "Fist" },
+      "Worshipper's Shield": { stats: { Scaling_Offhand: 0, Weight: 6 }, description: "A shield bearing an emblem of a Flamepriest. The worship of Fire is seen as embracing a dichotomy between the Fire and the Sea, and places the Deep as the ultimate enemy, with the Fire representing mankind.", sellRarity: "", type: "Shield" },
+      "Wraithclaw": { stats: { Chip: 25, Scaling_WeaponLight: 4, Weight: 5, SwingSpeed: 0.86, Scaling_ElementWind: 5.5, Length: 6.5, Penetration: 10, Damage: 16 }, description: "Bound and woven with hair and sinew, a spectral claw forms from the grudges of those sacrificed to create it. Across Lumen, many believe that the voices of the dead are carried by the wind. So too do many believe that the winds of Lumen originate from the swirling vortex of the Moonseye above. Perhaps these voices are those of the Old World, mourning and howling at what has become of Lumen.", sellRarity: "Mythic", type: "Fist" },
+      "Wraithstrike Sabre": { halloween: 1, stats: { Scaling_Willpower: 1.25, Scaling_WeaponMedium: 3, SwingSpeed: 0.78, Length: 8, Weight: 5, Damage: 24 }, description: "A blade of fine craft, likely an heirloom of whoever held the blade before it was pilfered from their remains.", sellRarity: "Common", type: "Sword" },
+      "Wretched Mawblades": { halloween: 1, stats: { Scaling_WeaponHeavy: 8, SwingSpeed: 0.615, Weight: 8, Length: 9, Damage: 27.5 }, description: "Born from a twisted experiment by the enigmatic lightborn smiths of the floating keep, the Mawblades are a testament to unspeakable treachery. Stripped of mortality and violently reshaped, the tortured souls within these blades endure a fate crueler than death, their teeth aching eternally as they are bound to the insatiable hunger for destruction.", sellRarity: "", type: "Greatsword" },
+      "Wyrmtooth": { stats: { Scaling_WeaponHeavy: 4.2, Penetration: 25, Scaling_WeaponMedium: 6.2, SwingSpeed: 0.7, Length: 9, Weight: 7, Damage: 20 }, description: "An exceptionally long and unwieldy blade of Etrean make. Useless in the hands of a novice, but lethal in the hands of one who can adapt to its unnatural centre of gravity.", sellRarity: "", type: "Sword" },
+      "Ysley's Pyre Keeper": { spec: 1, stats: { Scaling_WeaponHeavy: 5, Scaling_ElementFire: 6, Penetration: 15, SwingSpeed: 0.7, Length: 8, Weight: 5, Damage: 23 }, description: "An exceptionally long and unwieldy blade of Etrean make. Useless in the hands of a novice, but lethal in the hands of one who can adapt to its unnatural centre of gravity.", sellRarity: "", type: "Sword" },
+      "Yurei's Blunderbuss": { halloween: 1, stats: { Scaling_ElementFire: 4, Weight: 1, SwingSpeed: 0.68, Scaling_WeaponLight: 8, Length: 10.5, Damage: 14 }, description: "A greatly crafted Blunderbuss capable of an intense shot, forged by the Champion Yurei.", sellRarity: "", type: "Gun" },
+      "Zweihander": { stats: { Scaling_WeaponHeavy: 7, EndLag: 0.1, SwingSpeed: 0.6, Weight: 7, Length: 9, Damage: 22.5 }, description: "Popularised by the Canor Borderwatchers, the Zweihander is as fearsome as it is heavy.", sellRarity: "", type: "Greatsword" }
+    };
+
+
+    const STAT_LABELS = {
+      Damage: 'DMG', SwingSpeed: 'SPD', Weight: 'WT', Length: 'LEN',
+      Penetration: 'PEN', Chip: 'CHIP', Bleed: 'BLD', EndLag: 'LAG',
+      SwingSpeedMod: 'SPDMOD', Shots: 'SHOTS', Reload: 'RELOAD',
+      SoulsplitCount: 'SPLIT',
+      Scaling_WeaponLight: 'LIGHT', Scaling_WeaponMedium: 'MED', Scaling_WeaponHeavy: 'HEAVY',
+      Scaling_ElementFire: 'FIRE', Scaling_ElementIce: 'ICE',
+      Scaling_ElementLightning: 'LGTN', Scaling_ElementShadow: 'SHDW',
+      Scaling_ElementWind: 'WIND',
+      Scaling_Strength: 'STR', Scaling_Intelligence: 'INT', Scaling_Charisma: 'CHA',
+      Scaling_Willpower: 'WIL', Scaling_Fortitude: 'FOR', Scaling_Body: 'BODY',
+      Scaling_Mind: 'MIND', Scaling_Offhand: 'OFFHAND'
+    };
+
+    const STAT_COLORS = {
+      Scaling_WeaponLight: 'var(--lnk)',
+      Scaling_WeaponMedium: 'var(--pre)',
+      Scaling_WeaponHeavy: 'var(--exc)',
+      Scaling_ElementFire: '#f97316',
+      Scaling_ElementIce: '#67e8f9',
+      Scaling_ElementLightning: '#fde047',
+      Scaling_ElementShadow: '#a78bfa',
+      Scaling_ElementWind: '#86efac'
+    };
+
+    function classifyWeapon(name, w) {
+      const s = w.stats;
+      if (s.Scaling_Offhand !== undefined) return null;
+      
+      // Check for spec flag - if true, don't display
+      const isSpec = w.spec === 1;
+      if (isSpec) return null;
+      
+      // Check for elemental scaling first
+      const elementalKeys = Object.keys(s).filter(k => k.startsWith('Scaling_Element'));
+      if (elementalKeys.length > 0) {
+        return { tier: 'elemental', sub: 'elemental' };
+      }
+      
+      const hasL = s.Scaling_WeaponLight !== undefined;
+      const hasM = s.Scaling_WeaponMedium !== undefined;
+      const hasH = s.Scaling_WeaponHeavy !== undefined;
+      const wc = (hasL ? 1 : 0) + (hasM ? 1 : 0) + (hasH ? 1 : 0);
+      
+      const TYPE_TIER = {
+        Dagger: 'light', Fist: 'light', Gun: 'light', Rapier: 'light',
+        Sword: 'medium', Spear: 'medium', Club: 'medium', Rifle: 'medium',
+        Twinblade: 'medium', Bow: 'medium',
+        Greataxe: 'heavy', Greatsword: 'heavy', Greathammer: 'heavy', Greatcannon: 'heavy'
+      };
+      let tier;
+      if (wc >= 2) tier = 'hybrid';
+      else if (hasL) tier = 'light';
+      else if (hasM) tier = 'medium';
+      else if (hasH) tier = 'heavy';
+      else return null;
+      
+      const TYPE_SUB = {
+        Dagger: 'daggers', Fist: 'fists', Gun: 'pistols', Rapier: 'rapiers',
+        Sword: 'swords', Spear: 'spears', Club: 'clubs', Rifle: 'rifles',
+        Twinblade: 'twinblades', Bow: 'bows',
+        Greataxe: 'greataxes', Greatsword: 'greatswords',
+        Greathammer: 'greathammers', Greatcannon: 'greatcannons'
+      };
+      const sub = TYPE_SUB[w.type] || 'other';
+      return { tier, sub };
+    }
+
+    function fmtStat(v) {
+      if (typeof v !== 'number') return String(v);
+      const r = parseFloat(v.toPrecision(5));
+      return String(r);
+    }
+
+    function renderWeaponCard(name, w, i) {
+      const s = w.stats;
+      const scalingKeys = Object.keys(s).filter(k => k.startsWith('Scaling_'));
+      const statOrder = ['Damage', 'SwingSpeed', 'Length', 'Weight', 'Penetration', 'Chip', 'Bleed', 'EndLag', 'SwingSpeedMod', 'Shots', 'Reload', 'SoulsplitCount'];
+      const orderedStats = [
+        ...scalingKeys,
+        ...statOrder.filter(k => s[k] !== undefined),
+        ...Object.keys(s).filter(k => !k.startsWith('Scaling_') && !statOrder.includes(k))
+      ];
+      const chips = orderedStats.map(k => {
+        const label = STAT_LABELS[k] || k.replace('Scaling_', '').replace('Element', 'EL ').replace(/_/g, ' ');
+        const color = STAT_COLORS[k] || 'var(--mu)';
+        return `<span class="cb" style="color:${color}">${esc(label)}: ${esc(fmtStat(s[k]))}</span>`;
+      }).join('');
+      const RARITY_COLORS = { Common: '#9ca3af', Uncommon: '#4ade80', Rare: '#60a5fa', Legendary: '#fbbf24', Mythic: '#a855f7' };
+      const rc = RARITY_COLORS[w.sellRarity] || '';
+      
+      // Add Halloween capsule if flag is present
+      let halloweenCapsule = '';
+      if (w.halloween === 1) {
+        halloweenCapsule = `<span class="cb" style="color:#ff6b35;font-weight:bold;margin-left:5px;">HALLOWEEN</span>`;
+      }
+      
+      // Add Crazy Slots capsule for weapons with flag
+      let crazySlotsCapsule = '';
+      if (w.crazy_slots === 1) {
+        crazySlotsCapsule = `<span class="cb" style="color:#decfad;font-weight:bold;margin-left:5px;">CRAZY SLOTS</span>`;
+      }
+      
+      return `<li class="fi fade" style="animation-delay:${160 + i * 28}ms">
+    <div class="th">
+     <span class="tn">${esc(name)}</span>
+     <span class="cb">${esc(w.type || '')}</span>
+     ${w.sellRarity ? `<span class="cb" style="color:${rc}">${esc(w.sellRarity)}</span>` : ''}
+     ${crazySlotsCapsule}
+     ${halloweenCapsule}
+    </div>
+    <div class="ws">${chips}</div>
+    ${w.description ? `<div style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--mu);font-style:italic;margin-top:3px;line-height:1.5;">${esc(w.description)}</div>` : ''}
+   </li>`;
+    }
+
+    function renderWeapons(cat) {
+      curCat = cat; setOn(cat);
+      const pc = document.getElementById('pc');
+      if (cat === 'weapons') {
+        const tiers = [
+          { id: 'weapons_heavy', label: 'Heavy', desc: 'greataxes · greatswords · greathammers · greatcannons', color: 'var(--exc)' },
+          { id: 'weapons_medium', label: 'Medium', desc: 'swords · spears · clubs · rifles · twinblades · bows', color: 'var(--pre)' },
+          { id: 'weapons_light', label: 'Light', desc: 'daggers · fists · pistols · rapiers', color: 'var(--lnk)' },
+          { id: 'weapons_hybrid', label: 'Hybrid', desc: 'multiple weapon scaling types', color: 'oklch(0.6 0.15 300)' },
+          { id: 'weapons_elemental', label: 'Elemental', desc: 'ice · wind · shadow · lightning · fire', color: 'transparent' },
+          { id: 'weapons_all', label: 'All', desc: 'all weapons in one place', color: 'var(--mu)' }
+        ];
+        if (SHOW_SPEC) tiers.push({ id: 'weapons_spec', label: 'Spec', desc: 'special category', color: 'var(--mu)' });
+        let h = hdr('Weapons', 'heavy · medium · light · hybrid · elemental · all');
+        h += '<ul class="fl">';
+        tiers.forEach((t, i) => {
+          const cnt = t.id === 'weapons_all' ? Object.keys(Weapons).length : Object.entries(Weapons).filter(([n, w]) => {
+            const c = classifyWeapon(n, w); return c && c.tier === t.id.replace('weapons_', '');
+          }).length;
+          const titleStyle = t.color === 'transparent' ? 'class="elemental-gradient"' : `style="color:${t.color}"`;
+          h += `<li class="fi ii fade" style="animation-delay:${200 + i * 35}ms;cursor:pointer;" onclick="renderWeapons('${t.id}')">
+    <strong ${titleStyle}>${esc(t.label)}</strong>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.07em;color:var(--mu);margin-left:8px;text-transform:uppercase;">${cnt} weapons</span>
+    <br><span style="color:var(--mu);font-size:13.5px;">${esc(t.desc)}</span>
+   </li>`;
+        });
+        h += '</ul>';
+        pc.innerHTML = h; hookHam2(); return;
+      }
+      const TIER_MAP = {
+        weapons_all: 'all', weapons_elemental: 'elemental', weapons_light: 'light', weapons_medium: 'medium',
+        weapons_heavy: 'heavy', weapons_hybrid: 'hybrid', weapons_spec: 'spec'
+      };
+      const tier = TIER_MAP[cat]; if (!tier) return;
+      const TIER_LABELS = { all: 'All Weapons', elemental: 'Elemental Weapons', light: 'Light Weapons', medium: 'Medium Weapons', heavy: 'Heavy Weapons', hybrid: 'Hybrid Weapons', spec: 'Spec' };
+      const TIER_COLORS = { all: 'var(--mu)', elemental: 'transparent', light: 'var(--lnk)', medium: 'var(--pre)', heavy: 'var(--exc)', hybrid: 'oklch(0.6 0.15 300)', spec: 'var(--mu)' };
+      
+      // Get all weapons for the category
+      let weaponEntries = [];
+      if (tier === 'all') {
+        weaponEntries = Object.entries(Weapons);
+      } else {
+        Object.entries(Weapons).forEach(([n, w]) => {
+          const c = classifyWeapon(n, w);
+          if (c && c.tier === tier) {
+            weaponEntries.push([n, w]);
+          }
+        });
+      }
+      
+      // Sort weapons
+      const sortedWeapons = weaponSort(weaponEntries);
+      
+      let h = hdr(TIER_LABELS[tier], '', TIER_COLORS[tier]);
+      
+      // Add elemental background for elemental category
+      if (tier === 'elemental') {
+        h = h.replace('<div class="tr unblur d0">', '<div class="tr unblur d0 elemental-bg">');
+      }
+      
+      // Add sorting controls
+      const allStats = ['Damage', 'SwingSpeed', 'Weight', 'Length', 'Penetration', 'Chip', 'Bleed', 'EndLag', 'SwingSpeedMod', 'Shots', 'Reload', 'SoulsplitCount',
+        'Scaling_WeaponLight', 'Scaling_WeaponMedium', 'Scaling_WeaponHeavy',
+        'Scaling_ElementFire', 'Scaling_ElementIce', 'Scaling_ElementLightning', 'Scaling_ElementShadow', 'Scaling_ElementWind',
+        'Scaling_Strength', 'Scaling_Intelligence', 'Scaling_Charisma', 'Scaling_Willpower', 'Scaling_Fortitude', 'Scaling_Body', 'Scaling_Mind'];
+      
+      h += `<div class="sc fade d1">
+  <span class="sl">sort</span>
+  <div class="ms"><select id="weaponSrtSel">
+   <option value="name"${weaponSortKey === "name" ? " selected" : ""}>Name</option>
+   <option value="type"${weaponSortKey === "type" ? " selected" : ""}>Type</option>
+   <option value="rarity"${weaponSortKey === "rarity" ? " selected" : ""}>Rarity</option>`;
+      
+      allStats.forEach(stat => {
+        const label = STAT_LABELS[stat] || stat.replace(/_/g, ' ');
+        h += `   <option value="${stat}"${weaponSortKey === stat ? " selected" : ""}>${label}</option>`;
+      });
+      
+      h += `  </select></div>
+  <button id="weaponSrtDir" class="btn">${weaponSortAsc ? "A → Z" : "Z → A"}</button>
+  <span class="sl" style="margin-left:15px;">then sort</span>
+  <div class="ms"><select id="weaponThenSrtSel">
+   <option value="none"${!weaponThenSortKey || weaponThenSortKey === "none" ? " selected" : ""}>None</option>
+   <option value="name"${weaponThenSortKey === "name" ? " selected" : ""}>Name</option>
+   <option value="type"${weaponThenSortKey === "type" ? " selected" : ""}>Type</option>
+   <option value="rarity"${weaponThenSortKey === "rarity" ? " selected" : ""}>Rarity</option>`;
+      
+      allStats.forEach(stat => {
+        const label = STAT_LABELS[stat] || stat.replace(/_/g, ' ');
+        h += `   <option value="${stat}"${weaponThenSortKey === stat ? " selected" : ""}>${label}</option>`;
+      });
+      
+      h += `  </select></div>
+  <button id="weaponThenSrtDir" class="btn" ${!weaponThenSortKey || weaponThenSortKey === "none" ? "disabled" : ""}>${weaponThenSortAsc ? "A → Z" : "Z → A"}</button>
+  <span class="pi">${sortedWeapons.length} weapons</span>
+ </div>`;
+      
+      if (tier === 'all') {
+        // For all weapons, just display them all
+        h += '<ul class="fl">';
+        sortedWeapons.forEach(([n, w], i) => { h += renderWeaponCard(n, w, i); });
+        h += '</ul>';
+      } else {
+        // For specific tiers, group by subcategory
+        const SUB_ORDER = {
+          elemental: ['elemental'],
+          light: ['daggers', 'fists', 'pistols', 'rapiers'],
+          medium: ['swords', 'spears', 'clubs', 'rifles', 'twinblades', 'bows'],
+          heavy: ['greataxes', 'greatswords', 'greathammers', 'greatcannons'],
+          hybrid: ['swords', 'spears', 'daggers', 'fists', 'clubs', 'greatswords', 'other'],
+          spec: []
+        };
+        const SUB_LABELS = {
+          elemental: 'Elemental', daggers: 'Daggers', fists: 'Fists', pistols: 'Pistols', rapiers: 'Rapiers',
+          swords: 'Swords', spears: 'Spears', clubs: 'Clubs', rifles: 'Rifles', twinblades: 'Twinblades',
+          bows: 'Bows', greataxes: 'Greataxes', greatswords: 'Greatswords',
+          greathammers: 'Greathammers', greatcannons: 'Greatcannons', other: 'Other'
+        };
+        
+        const groups = {};
+        sortedWeapons.forEach(([n, w]) => {
+          const c = classifyWeapon(n, w);
+          if (!c) return;
+          const sub = c.sub;
+          if (!groups[sub]) groups[sub] = [];
+          groups[sub].push([n, w]);
+        });
+        
+        const ordered = [...(SUB_ORDER[tier] || []), ...Object.keys(groups).filter(s => !(SUB_ORDER[tier] || []).includes(s))];
+        ordered.forEach(sub => {
+          const items = groups[sub]; if (!items || !items.length) return;
+          h += `<div class="st fade d2">${esc(SUB_LABELS[sub] || sub)}</div><ul class="fl">`;
+          items.forEach(([n, w], i) => { h += renderWeaponCard(n, w, i); });
+          h += '</ul>';
+        });
+      }
+      
+      if (!sortedWeapons.length) h += '<p class="pd">no weapons here yet.</p>';
+      pc.innerHTML = h; hookHam2();
+      
+      // Attach sorting event listeners
+      document.getElementById('weaponSrtSel').addEventListener('change', e => { weaponSortKey = e.target.value; renderWeapons(cat); });
+      document.getElementById('weaponSrtDir').addEventListener('click', () => { weaponSortAsc = !weaponSortAsc; renderWeapons(cat); });
+      document.getElementById('weaponThenSrtSel').addEventListener('change', e => { 
+        weaponThenSortKey = e.target.value === 'none' ? null : e.target.value; 
+        document.getElementById('weaponThenSrtDir').disabled = !weaponThenSortKey;
+        renderWeapons(cat); 
+      });
+      document.getElementById('weaponThenSrtDir').addEventListener('click', () => { weaponThenSortAsc = !weaponThenSortAsc; renderWeapons(cat); });
+    }
+
+    let elementalBoxEnabled = 0; // Change this to 1 to turn on the elemental box
+
+    const cl = c => (CATS[c] && CATS[c].l) || c;
+    const ce = c => (CATS[c] && CATS[c].e) || "";
+
+    function esc(s) { return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+    function fmtR(r) {
+      if (!r || r === "None") return `<em style="opacity:.4">—</em>`;
+      return r.split(/(\[.*?\])/g).map(p => {
+        const t = p.trim(); if (!t) return "";
+        if (t.startsWith("[ PREREQUISIT")) return `<span class="rp">${esc(t)}</span>`;
+        if (t.startsWith("[ MUTUAL EXCLUS")) return `<span class="rx">${esc(t)}</span>`;
+        return `<span class="rb">${esc(t)}</span>`;
+      }).join(" ").trim();
+    }
+
+    
+    function _norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, '').trim(); }
+    function buildDepMap() {
+      const normToKey = {};
+      Object.keys(T).forEach(k => { normToKey[_norm(k)] = k; });
+      const children = {};
+      const excl = {};
+
+      Object.entries(T).forEach(([name, t]) => {
+        const r = t.r || '';
+        const matches = Array.from(String(r).matchAll(/\[([^\]]*?)\]/g)).map(m => m[1]);
+        matches.forEach(m => {
+
+          const isReq = /PREREQUISIT/i.test(m);
+          const isEx = /MUTUAL\s+EXCLUS/i.test(m);
+
+          let content = m.replace(/PREREQUISIT(?:E|ES)\s*:?/i, '')
+            .replace(/MUTUAL\s+EXCLUS(?:IVE|IVES)\s*:?/i, '')
+            .trim();
+          content.split(',').map(x => x.trim()).forEach(pr => {
+            const norm = _norm(pr);
+            const key = normToKey[norm];
+            if (!key) return;
+            if (isReq) {
+              children[key] = children[key] || [];
+              if (!children[key].includes(name)) children[key].push(name);
+            }
+            if (isEx) {
+              excl[key] = excl[key] || [];
+              if (!excl[key].includes(name)) excl[key].push(name);
+            }
+          });
+        });
+      });
+
+      return { children, excl };
+    }
+
+    let DEP_MAP = null;
+    function ensureDepMap() { if (!DEP_MAP) DEP_MAP = buildDepMap(); return DEP_MAP; }
+
+    function _collectLines(name, dep, seen, prefix) {
+      if (seen.has(name)) return [];
+      const nextSeen = new Set(seen);
+      nextSeen.add(name);
+      const ch = (dep.children && dep.children[name]) || [];
+      const ex = (dep.excl && dep.excl[name]) || [];
+      const both = [];
+      ch.forEach(c => both.push({ n: c, type: 'req' }));
+      ex.forEach(c => both.push({ n: c, type: 'ex' }));
+      if (!both.length) return [];
+      let lines = [];
+      both.forEach((item, idx) => {
+        const isLast = idx === both.length - 1;
+        const connector = item.type === 'ex'
+          ? (isLast ? 'x└─' : 'x├─')
+          : (isLast ? '└─' : '├─');
+        const childContinue = prefix + (isLast ? '   ' : '│  ');
+        lines.push({ prefix, connector, item });
+        lines = lines.concat(_collectLines(item.n, dep, nextSeen, childContinue));
+      });
+      return lines;
+    }
+
+    function renderSubtreeHTML(name, dep, seen) {
+      const lines = _collectLines(name, dep, seen || new Set(), '');
+      if (!lines.length) return '';
+      return lines.map(({ prefix, connector, item }) => {
+        const isEx = item.type === 'ex';
+        return `<div class="dep-row">` +
+          `<span class="dep-prefix">${esc(prefix + connector)} </span>` +
+          `<a href="#" class="dep-link${isEx ? ' rx' : ''}" data-name="${esc(item.n)}">${esc(item.n)}</a>` +
+          `</div>`;
+      }).join('');
+    }
+
+    function attachDependencyTrees() {
+      const dep = ensureDepMap();
+      document.querySelectorAll('.fi').forEach(fi => {
+        if (fi.querySelector('.dep-children') || fi.querySelector('.dep-level')) return;
+        const tnEl = fi.querySelector('.tn'); if (!tnEl) return;
+        const name = tnEl.textContent.trim();
+        const hasChildren = (dep.children && dep.children[name] && dep.children[name].length) || (dep.excl && dep.excl[name] && dep.excl[name].length);
+        if (!hasChildren) return;
+
+        tnEl.classList.add('dep-main');
+        const caret = document.createElement('span');
+        caret.className = 'dep-caret';
+        caret.textContent = '▾';
+        tnEl.appendChild(caret);
+
+        const container = document.createElement('div');
+        container.className = 'dep-children';
+        container.style.display = 'none';
+        container.innerHTML = renderSubtreeHTML(name, dep);
+        fi.appendChild(container);
+
+        tnEl.addEventListener('click', (e) => {
+          if (e.target.closest('.cmp-tog')) return;
+          const open = container.style.display === 'block';
+          container.style.display = open ? 'none' : 'block';
+          caret.textContent = open ? '▾' : '▴';
+        });
+
+
+        container.querySelectorAll('.dep-link').forEach(a => {
+          a.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            const nm = ev.currentTarget.dataset.name;
+            doSearch(nm);
+          });
+        });
+      });
+    }
+
+    
+    const PER = 10;
+    let curCat = "information", curPage = 1, sortKey = "name", sortAsc = true, weaponSortKey = "name", weaponSortAsc = true, weaponThenSortKey = null, weaponThenSortAsc = true, cmp = [], sbOpen = true;
+    const mob = () => window.innerWidth <= 700;
+
+    
+    function buildSb() {
+      const sb = document.getElementById("sb");
+      sb.innerHTML = `<a href="#" class="nav" data-c="information"><strong>Information</strong></a>
+  <div class="nd">attuned</div>
+  ${["frostdraw", "thundercall", "shadowcast", "flamecharm", "galebreath"].map(c => `<a href="#" class="nav" data-c="${c}"><strong>${ce(c)} ${cl(c)}</strong></a>`).join("")}
+  <div class="nd">main</div>
+  ${["strength", "agility", "fortitude", "willpower", "intelligence", "charisma"].map(c => `<a href="#" class="nav" data-c="${c}"><strong>${ce(c)} ${cl(c)}</strong></a>`).join("")}
+  <div class="nd">other</div>
+  ${["weapon_style", "general"].map(c => `<a href="#" class="nav" data-c="${c}"><strong>${ce(c)} ${cl(c)}</strong></a>`).join("")}
+  <div class="nd">weapons</div>
+  <a href="#" class="nav" data-c="weapons"><strong>Weapons</strong></a>
+  <a href="#" class="nav" data-c="weapons_heavy" style="padding-left:22px">Heavy</a>
+  <a href="#" class="nav" data-c="weapons_medium" style="padding-left:22px">Medium</a>
+  <a href="#" class="nav" data-c="weapons_light" style="padding-left:22px">Light</a>
+  <a href="#" class="nav" data-c="weapons_hybrid" style="padding-left:22px">Hybrid</a>
+  <a href="#" class="nav" data-c="weapons_elemental" style="padding-left:22px">Elemental</a>
+  <a href="#" class="nav" data-c="weapons_all" style="padding-left:22px">All</a>
+  ${SHOW_SPEC ? '<a href="#" class="nav" data-c="weapons_spec" style="padding-left:22px">Spec</a>' : ''}
+  <div class="nd">pages</div>
+  <a href="#" class="nav" onclick="window.open('/builder', '_blank'); return false;"><strong>Builder</strong></a>
+  <a href="#" class="nav" data-c="todo"><strong>To-Do</strong></a>
+  <a href="#" class="nav" data-c="progress"><strong>Progress</strong></a>
+  <a href="#" class="nav" data-c="all"><strong>All Talents</strong></a>`;
+    }
+    function setOn(c) { document.querySelectorAll(".nav").forEach(el => el.classList.toggle("on", el.dataset.c === c)); }
+
+    
+    function toggleElementalBox() {
+      elementalBoxEnabled = elementalBoxEnabled === 1 ? 0 : 1;
+      const bgClass = elementalBoxEnabled === 1 ? 'elemental-bg' : '';
+      const currentHeader = document.querySelector('.tr.unblur.d0');
+      if (currentHeader) {
+        currentHeader.className = `tr unblur d0 ${bgClass}`;
+      }
+    }
+    
+    function addElementalToggle() {
+      const pc = document.getElementById('pc');
+      const currentHeader = pc.querySelector('.tr.unblur.d0');
+      if (currentHeader && currentHeader.querySelector('.elemental-gradient')) {
+        // Add toggle button next to the back button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'btn';
+        toggleBtn.id = 'elementalToggle';
+        toggleBtn.title = 'Toggle elemental box';
+        toggleBtn.textContent = elementalBoxEnabled === 1 ? '📦' : '📂';
+        toggleBtn.style.marginLeft = '5px';
+        toggleBtn.addEventListener('click', toggleElementalBox);
+        
+        const backBtn = currentHeader.querySelector('#backInfo2');
+        if (backBtn) {
+          backBtn.parentNode.insertBefore(toggleBtn, backBtn.nextSibling);
+        }
+      }
+    }
+    function hookHam2() { const b = document.getElementById("ham2"); if (b) b.addEventListener("click", toggleSb); const b2 = document.getElementById("backInfo2"); if (b2) b2.addEventListener("click", () => render('information', 1)); }
+
+    function hdr(title, sub = "", color = null) {
+      const titleHTML = color === 'transparent' ? `<span class="elemental-gradient">${esc(title)}</span>` : (color ? `<span style="color:${color}">${esc(title)}</span>` : esc(title));
+      const bgClass = (color === 'transparent' && elementalBoxEnabled === 1) ? 'elemental-bg' : '';
+      return `<div class="tr unblur d0 ${bgClass}"><button class="ham2" id="ham2">☰</button><button class="ham2" id="backInfo2" title="Back to information">←</button><h1 class="pt">${titleHTML}</h1></div>${sub ? `<p class="pd fade d1">${sub}</p>` : ""}`;
+    }
+    function hookHam2() { const b = document.getElementById("ham2"); if (b) b.addEventListener("click", toggleSb); const b2 = document.getElementById("backInfo2"); if (b2) b2.addEventListener("click", () => render('information', 1)); }
+
+    function srt(arr) {
+      return [...arr].sort((a, b) => {
+        const va = sortKey === "category" ? a[1].c : a[0].toLowerCase();
+        const vb = sortKey === "category" ? b[1].c : b[0].toLowerCase();
+        return sortAsc ? va < vb ? -1 : va > vb ? 1 : 0 : va > vb ? -1 : va < vb ? 1 : 0;
+      });
+    }
+
+    function weaponSort(arr) {
+      return [...arr].sort((a, b) => {
+        // Primary sort
+        let comparison = compareWeapons(a, b, weaponSortKey, weaponSortAsc);
+        if (comparison !== 0) return comparison;
+        
+        // Secondary sort (if specified)
+        if (weaponThenSortKey && weaponThenSortKey !== "none") {
+          comparison = compareWeapons(a, b, weaponThenSortKey, weaponThenSortAsc);
+          if (comparison !== 0) return comparison;
+        }
+        
+        // Fallback to name sort
+        const nameA = a[0].toLowerCase();
+        const nameB = b[0].toLowerCase();
+        return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+      });
+    }
+
+    function compareWeapons(a, b, key, asc) {
+      const nameA = a[0];
+      const nameB = b[0];
+      const statsA = a[1].stats;
+      const statsB = b[1].stats;
+      
+      if (key === "name") {
+        const va = nameA.toLowerCase();
+        const vb = nameB.toLowerCase();
+        return asc ? va < vb ? -1 : va > vb ? 1 : 0 : va > vb ? -1 : va < vb ? 1 : 0;
+      }
+      
+      if (key === "type") {
+        const va = a[1].type || "";
+        const vb = b[1].type || "";
+        return asc ? va < vb ? -1 : va > vb ? 1 : 0 : va > vb ? -1 : va < vb ? 1 : 0;
+      }
+      
+      if (key === "rarity") {
+        const rarityOrder = { "": 0, "Common": 1, "Uncommon": 2, "Rare": 3, "Legendary": 4, "Mythic": 5 };
+        const va = rarityOrder[a[1].sellRarity || ""] || 0;
+        const vb = rarityOrder[b[1].sellRarity || ""] || 0;
+        return asc ? va - vb : vb - va;
+      }
+      
+      // For stats, get the value or default to 0
+      const va = statsA[key] ?? 0;
+      const vb = statsB[key] ?? 0;
+      
+      // Handle numeric comparison
+      if (typeof va === "number" && typeof vb === "number") {
+        return asc ? va - vb : vb - va;
+      }
+      
+      // Fallback to string comparison
+      const sa = String(va);
+      const sb = String(vb);
+      return asc ? sa < sb ? -1 : sa > sb ? 1 : 0 : sa > sb ? -1 : sa < sb ? 1 : 0;
+    }
+
+    function render(cat, page = 1) {
+      if (cat && cat.startsWith('weapons')) { renderWeapons(cat); return; }
+      curCat = cat; curPage = page; setOn(cat);
+      const pc = document.getElementById("pc");
+
+      if (cat === "information") {
+        const tot = Object.keys(T).length;
+        const cnt = {}; Object.values(T).forEach(t => { cnt[t.c] = (cnt[t.c] || 0) + 1; });
+        let h = hdr("Talents", "all " + tot + " playground talents");
+        h += `<div class="st fade d2">categories</div>`;
+
+
+        const attuned = ["frostdraw", "thundercall", "shadowcast", "flamecharm", "galebreath"];
+        let idx = 0;
+        h += `<ul class="fl">`;
+        attuned.forEach((k, i) => {
+          const v = CATS[k] || {};
+          h += `<li class="fi ii fade" data-cat="${k}" onclick="render('${k}',1)" style="animation-delay:${200 + idx * 35}ms;cursor:pointer;">
+    <strong style="color:${v.color || 'inherit'}">${v.e} ${v.l}</strong>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.07em;color:var(--mu);margin-left:8px;text-transform:uppercase;">${cnt[k] || 0} talents</span>
+    <br><span style="color:var(--mu);font-size:13.5px;">${esc(v.d)}</span>
+   </li>`;
+          idx++;
+        });
+        h += `</ul>`;
+
+        h += `<div class="info-sep"></div>`;
+
+
+        const main = ["strength", "agility", "fortitude", "willpower", "intelligence", "charisma"];
+        h += `<ul class="fl">`;
+        main.forEach((k, i) => {
+          const v = CATS[k] || {};
+          h += `<li class="fi ii fade" data-cat="${k}" onclick="render('${k}',1)" style="animation-delay:${200 + idx * 35}ms;cursor:pointer;">
+    <strong style="color:${v.color || 'inherit'}">${v.e} ${v.l}</strong>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.07em;color:var(--mu);margin-left:8px;text-transform:uppercase;">${cnt[k] || 0} talents</span>
+    <br><span style="color:var(--mu);font-size:13.5px;">${esc(v.d)}</span>
+   </li>`;
+          idx++;
+        });
+        h += `</ul>`;
+
+        h += `<div class="info-sep"></div>`;
+
+
+        const other = ["weapon_style", "general"];
+        h += `<ul class="fl">`;
+        other.forEach((k, i) => {
+          const v = CATS[k] || {};
+          h += `<li class="fi ii fade" data-cat="${k}" onclick="render('${k}',1)" style="animation-delay:${200 + idx * 35}ms;cursor:pointer;">
+    <strong style="color:${v.color || 'inherit'}">${v.e} ${v.l}</strong>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.07em;color:var(--mu);margin-left:8px;text-transform:uppercase;">${cnt[k] || 0} talents</span>
+    <br><span style="color:var(--mu);font-size:13.5px;">${esc(v.d)}</span>
+   </li>`;
+          idx++;
+        });
+        h += `</ul>`;
+
+        h += `<p class="pd fade d4" style="margin-top:28px;font-size:13px;">
+   <span class="rp">[ PREREQUISITE: green ]</span> &nbsp; <span class="rx">[ MUTUAL EXCLUSIVE: red ]</span><br>
+   dm on discord (minecraftfox).
+  </p>`;
+        pc.innerHTML = h; hookHam2(); return;
+      }
+      if (cat === "todo") {
+        let h = hdr("To-Do");
+        h += `<ul class="fl fade d1">
+   <li class="fi ii" style="color:var(--acc)">[DONE] — talent tree</li>
+  </ul>`;
+        pc.innerHTML = h; hookHam2(); return;
+      }
+      if (cat === "progress") {
+        let h = hdr("Progress", "dev log.");
+        h += `<ul class="fl fade d1">
+   <li class="fi ii">— imported full talent spreadsheet, built layout and all categories</li>
+   <li class="fi ii">— new entries added after each update</li>
+  </ul>`;
+        pc.innerHTML = h; hookHam2(); return;
+      }
+
+      const all = cat === "all" ? Object.entries(T) : Object.entries(T).filter(([, t]) => t.c === cat);
+      const sorted = srt(all);
+      const total = Math.max(1, Math.ceil(sorted.length / PER));
+      if (page < 1) page = 1; if (page > total) page = total; curPage = page;
+
+      const titleText = cat === "all" ? "All Talents" : `${ce(cat)} ${cl(cat)}`;
+      const titleColor = cat === "all" ? null : (CATS[cat] && CATS[cat].color) || null;
+      let h = hdr(titleText, "", titleColor);
+
+      h += `<div class="sc fade d1">
+  <span class="sl">sort</span>
+  <div class="ms"><select id="srtSel">
+   <option value="name"${sortKey === "name" ? " selected" : ""}>Name</option>
+   <option value="category"${sortKey === "category" ? " selected" : ""}>Category</option>
+  </select></div>
+  <button id="srtDir" class="btn">${sortAsc ? "A → Z" : "Z → A"}</button>
+  <button id="cmpBtn2" class="btn" ${cmp.length < 2 ? "disabled" : ""} style="font-weight:700;min-width:110px;">Compare (${cmp.length})</button>
+  <span class="pi">pg ${page}/${total} · ${sorted.length} talent${sorted.length !== 1 ? "s" : ""}</span>
+ </div>`;
+
+      if (!sorted.length) { h += `<p class="pd">no talents here.</p>`; }
+      else {
+        h += `<ul class="fl">`;
+        sorted.slice((page - 1) * PER, page * PER).forEach(([n, t], i) => {
+          const chk = cmp.includes(n) ? "checked" : "";
+          h += `<li class="fi fade" style="animation-delay:${160 + i * 28}ms">
+    <div class="th">
+     <span class="tn">${esc(n)}</span>
+     <span class="cb" style="color:${(CATS[t.c] && CATS[t.c].color) || 'inherit'}">${ce(t.c)} ${cl(t.c)}</span>
+     <label class="cmp-tog" title="Add to compare">
+      <input type="checkbox" class="cmp-cb" data-n="${esc(n)}" ${chk}/>
+      <span class="cmp-sw"></span>
+     </label>
+    </div>
+    <div class="rq">${fmtR(t.r)}</div>
+   </li>`;
+        });
+        h += `</ul>`;
+      }
+      h += `<div class="pg fade d4">
+  <button class="pb" id="prev" ${page <= 1 ? "disabled" : ""}>← prev</button>
+  <button class="pb" id="next" ${page >= total ? "disabled" : ""}>next →</button>
+ </div>`;
+      pc.innerHTML = h; hookHam2();
+
+      attachDependencyTrees();
+
+      document.getElementById("srtSel").addEventListener("change", e => { sortKey = e.target.value; render(curCat, 1); });
+      document.getElementById("srtDir").addEventListener("click", () => { sortAsc = !sortAsc; render(curCat, curPage); });
+      document.getElementById("prev")?.addEventListener("click", () => render(curCat, curPage - 1));
+      document.getElementById("next")?.addEventListener("click", () => render(curCat, curPage + 1));
+      document.getElementById("cmpBtn2")?.addEventListener("click", openCmp);
+      document.querySelectorAll(".cmp-cb").forEach(cb => {
+        cb.addEventListener("change", e => {
+          const n = e.target.dataset.n;
+          if (e.target.checked) { if (!cmp.includes(n) && cmp.length < 6) cmp.push(n); else e.target.checked = false; }
+          else cmp = cmp.filter(x => x !== n);
+          const b2 = document.getElementById("cmpBtn2");
+          if (b2) { b2.textContent = `Compare (${cmp.length})`; b2.disabled = cmp.length < 2; }
+          const b = document.getElementById("cmpBtn");
+          if (b) { b.textContent = `Compare (${cmp.length})`; b.disabled = cmp.length < 2; }
+        });
+      });
+    }
+
+    
+    function openCmp() {
+      const ov = document.getElementById("cmpov"); ov.classList.add("on"); ov.setAttribute("aria-hidden", "false");
+      const w = document.getElementById("cmptw");
+      if (!cmp.length) { w.innerHTML = `<p style="color:var(--mu);font-style:italic;">nothing selected.</p>`; return; }
+      let h = `<table class="cmt"><thead><tr><th>Attribute</th>`;
+      cmp.forEach(n => { h += `<th>${esc(n)}</th>`; });
+      h += `</tr></thead><tbody><tr><td><strong>Category</strong></td>`;
+      cmp.forEach(n => { const t = T[n] || {}; h += `<td>${ce(t.c)} ${cl(t.c)}</td>`; });
+      h += `</tr><tr><td><strong>Requirements</strong></td>`;
+      cmp.forEach(n => { const t = T[n] || {}; h += `<td style="font-size:11px;">${fmtR(t.r)}</td>`; });
+      h += `</tr></tbody></table>`;
+      w.innerHTML = h;
+    }
+    function closeCmp() { const o = document.getElementById("cmpov"); o.classList.remove("on"); o.setAttribute("aria-hidden", "true"); }
+    function clearCmp() { cmp = []; document.querySelectorAll(".cmp-cb").forEach(c => { c.checked = false; }); closeCmp(); const b = document.getElementById("cmpBtn"); if (b) { b.textContent = "Compare (0)"; b.disabled = true; } }
+
+    
+    function doSearch(term) {
+      const pc = document.getElementById("pc");
+      if (!term.trim()) { render(curCat, 1); return; }
+      setOn(null); const q = term.toLowerCase();
+      
+      // Search talents
+      const talentResults = Object.entries(T).filter(([n, t]) => n.toLowerCase().includes(q) || (t.r && t.r.toLowerCase().includes(q)) || cl(t.c).toLowerCase().includes(q));
+      
+      // Search weapons
+      const weaponResults = Object.entries(Weapons).filter(([n, w]) => {
+        const c = classifyWeapon(n, w);
+        if (!c) return false;
+        return n.toLowerCase().includes(q) || (w.type && w.type.toLowerCase().includes(q)) || (w.description && w.description.toLowerCase().includes(q));
+      });
+      
+      let h = hdr(`"${esc(term)}"`);
+      h += `<div class="src fade d0">${talentResults.length + weaponResults.length} result${(talentResults.length + weaponResults.length) !== 1 ? "s" : ""}</div>`;
+      
+      if (!talentResults.length && !weaponResults.length) { 
+        h += `<p class="pd">no matches.</p>`; 
+      }
+      else {
+        // Display talent results
+        if (talentResults.length > 0) {
+          h += `<div class="st fade d2">Talents</div><ul class="fl">`;
+          talentResults.slice(0, 30).forEach(([n, t], i) => {
+            h += `<li class="fi fade" style="animation-delay:${i * 22}ms">
+    <div class="th"><span class="tn">${esc(n)}</span><span class="cb" style="color:${(CATS[t.c] && CATS[t.c].color) || 'inherit'}">${ce(t.c)} ${cl(t.c)}</span></div>
+    <div class="rq">${fmtR(t.r)}</div>
+   </li>`;
+          });
+          h += `</ul>`;
+          if (talentResults.length > 30) h += `<p style="color:var(--mu);font-size:10.5px;font-style:italic;">showing 30 of ${talentResults.length} talents</p>`;
+        }
+        
+        // Display weapon results
+        if (weaponResults.length > 0) {
+          h += `<div class="st fade d2">Weapons</div><ul class="fl">`;
+          weaponResults.slice(0, 30).forEach(([n, w], i) => {
+            h += renderWeaponCard(n, w, i);
+          });
+          h += `</ul>`;
+          if (weaponResults.length > 30) h += `<p style="color:var(--mu);font-size:10.5px;font-style:italic;">showing 30 of ${weaponResults.length} weapons</p>`;
+        }
+      }
+      pc.innerHTML = h; hookHam2();
+
+      attachDependencyTrees();
+    }
+
+    
+    function toggleSb() {
+      sbOpen = !sbOpen;
+      const sb = document.getElementById("sb"), mc = document.getElementById("main");
+      if (mob()) { sb.classList.toggle("mob", sbOpen); }
+      else { sb.classList.toggle("hidden", !sbOpen); mc.classList.toggle("full", !sbOpen); }
+    }
+
+    
+    let isDark = false;
+    function applyTheme(dark) {
+      isDark = dark;
+      const h = document.documentElement;
+      h.classList.remove("system", "dark", "light");
+      h.classList.add(dark ? "dark" : "light");
+      document.getElementById("thm").textContent = dark ? "☀️" : "🌙";
+      try { localStorage.setItem("dw-t", dark ? "dark" : "light"); } catch (e) { }
+    }
+    function initTheme() {
+      try { const s = localStorage.getItem("dw-t"); if (s) return applyTheme(s === "dark"); } catch (e) { }
+
+      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.getElementById("thm").textContent = isDark ? "☀️" : "🌙";
+    }
+
+    
+    function showEgg(m) { document.getElementById("egm").textContent = m; const o = document.getElementById("egov"); o.classList.add("on"); o.setAttribute("aria-hidden", "false"); }
+    function hideEgg() { const o = document.getElementById("egov"); o.classList.remove("on"); o.setAttribute("aria-hidden", "true"); }
+
+    
+    const TOCD = {
+      about: {
+        frostdraw: "frostdraw — if i dont fill this out the site will break",
+        thundercall: "thundercall — if i dont fill this out the site will break",
+        shadowcast: "shadowcast — if i dont fill this out the site will break",
+        flamecharm: "flamecharm — if i dont fill this out the site will break",
+        galebreath: "galebreath — if i dont fill this out the site will break",
+        strength: "strength talents — if i dont fill this out the site will break",
+        agility: "agility — if i dont fill this out the site will break",
+        fortitude: "fortitude — if i dont fill this out the site will break",
+        willpower: "willpower — if i dont fill this out the site will break",
+        intelligence: "intelligence — if i dont fill this out the site will break",
+        charisma: "charisma — if i dont fill this out the site will break",
+        weapon_style: "weapon - if i dont fill this out the site will break",
+        general: "general — if i dont fill this out the site will break",
+        information: "homepage.", todo: "HELP WANTED | talent bonuses (like hp)", progress: "dev log", all: "all talents"
+      },
+      this: {
+        frostdraw: "frostdraw talents.", thundercall: "thundercall talents.",
+        shadowcast: "shadowcast talents.", flamecharm: "flamecharm talents.",
+        galebreath: "galebreath talents.", strength: "strength talents.",
+        agility: "agility talents.", fortitude: "fortitude talents.",
+        willpower: "willpower talents.", intelligence: "intelligence talents.",
+        charisma: "charisma talents.", weapon_style: "weapon & style.",
+        general: "general talents.", information: "homepage.",
+        todo: "what'd you expect.", progress: "dev log", all: "all"
+      },
+      info: {
+        frostdraw: "paths: crystallization and freeze",
+        thundercall: "paths: normal and surge",
+        shadowcast: "paths: singularity and sightless still",
+        flamecharm: "eruption, twisted, azure ",
+        galebreath: "paths: suffocation and specter",
+        strength: "more strength is more posture",
+        agility: "a",
+        fortitude: "a",
+        willpower: "a.",
+        intelligence: "a",
+        charisma: "a",
+        weapon_style: "a",
+        general: "a",
+        information: "a",
+        todo: "dm me if you want something added | HELP WANTED: talent bonuses (like hp)", progress: "dev log", all: "all talents"
+      }
+    };
+    function updToc(type, cat) {
+      const el = document.getElementById("tocc");
+      el.classList.add("fd");
+      setTimeout(() => { el.textContent = (TOCD[type] && TOCD[type][cat]) || ""; el.classList.remove("fd"); }, 180);
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      buildSb(); initTheme(); render("information", 1);
+      document.getElementById("backInfo").addEventListener("click", () => render('information', 1));
+
+      document.getElementById("sb").addEventListener("click", e => {
+        const it = e.target.closest(".nav"); if (!it) return;
+        e.preventDefault(); sortKey = "name"; sortAsc = true;
+        render(it.dataset.c, 1);
+        if (mob()) { sbOpen = false; document.getElementById("sb").classList.remove("mob"); }
+      });
+
+      const si = document.getElementById("srch"); let st;
+      si.addEventListener("input", e => { clearTimeout(st); st = setTimeout(() => doSearch(e.target.value), 200); });
+      si.addEventListener("keydown", e => { if (e.key === "Escape") { si.value = ""; doSearch(""); } });
+
+      document.getElementById("ham").addEventListener("click", toggleSb);
+      document.getElementById("thm").addEventListener("click", () => applyTheme(!isDark));
+      document.getElementById("cmpBtn").addEventListener("click", openCmp);
+      document.getElementById("cmpcl").addEventListener("click", closeCmp);
+      document.getElementById("cmpclr").addEventListener("click", clearCmp);
+      document.getElementById("cmpov").addEventListener("click", e => { if (e.target === document.getElementById("cmpov")) closeCmp(); });
+
+
+      let lc = 0;
+      document.getElementById("logo").addEventListener("click", () => {
+        lc++; if (lc >= 5) { showEgg("You discovered the logo easter egg. Nice clicks."); lc = 0; }
+        setTimeout(() => { lc = 0; }, 1200);
+      });
+      const sec = ["t", "h", "e", " ", "m", "u", "s", "i", "c", " ", "i", "s", " ", "t", "h", "e", " ", "k", "e", "y"]; let sp = 0;
+      document.addEventListener("keydown", e => {
+        const k = e.key.toLowerCase();
+        if (k === sec[sp]) { sp++; if (sp === sec.length) { showEgg("and now the night is gone"); sp = 0; } }
+        else { sp = k === sec[0] ? 1 : 0; }
+      });
+      document.getElementById("egcl").addEventListener("click", hideEgg);
+      document.getElementById("egov").addEventListener("click", e => { if (e.target === document.getElementById("egov")) hideEgg(); });
+
+
+      document.getElementById("tocul").addEventListener("click", function (e) {
+        const lnk = e.target.closest(".toc-a"); if (!lnk) return;
+        e.preventDefault();
+        if (lnk.classList.contains("on")) { lnk.classList.remove("on"); document.getElementById("tocc").textContent = ""; return; }
+        document.querySelectorAll(".toc-a").forEach(a => a.classList.remove("on"));
+        lnk.classList.add("on");
+        updToc(lnk.dataset.t, curCat || "information");
+      });
+    });
+  </script>
+</body>
+
+</html>
